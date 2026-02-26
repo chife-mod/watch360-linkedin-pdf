@@ -72,7 +72,59 @@ body {
   background: #1a1917;
 }
 
-/* ── Scale HUD ── */
+/* ── Slide Deck (horizontal snap scroll) ── */
+.slide-deck {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  /* gap controlled inline via GAP constant */
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  width: 100%;
+  height: 100%;
+}
+
+.slide-deck::-webkit-scrollbar {
+  display: none;
+}
+
+/* snap on actual slide wrappers (not the end-spacer) */
+.slide-deck>div[style*='flex-shrink: 0'] {
+  scroll-snap-align: start;
+}
+
+/* ── Pagination dots (floats above HUD, left side) ── */
+.pagination {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  z-index: 10000;
+}
+
+.pagination-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.25);
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  flex-shrink: 0;
+}
+
+.pagination-dot--active {
+  background: #A98155;
+  transform: scale(1.35);
+}
+
 .scale-hud {
   position: fixed;
   bottom: 0;
@@ -172,6 +224,14 @@ body {
   color: rgba(255, 255, 255, 0.7);
   min-width: 36px;
   text-align: right;
+}
+
+.hud-divider {
+  width: 1px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.15);
+  flex-shrink: 0;
+  margin: 0 2px;
 }
 
 .save-pdf-btn {

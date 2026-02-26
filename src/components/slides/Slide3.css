@@ -1,0 +1,217 @@
+/* ============================================
+   Slide3 — Brand Activity
+   Node: 14425:205486
+   Two-tone: Sand top (#F0EFEE) + Dark panel (#3A3935)
+   Dark panel: top=405, height=945
+   ============================================ */
+
+.s3-viewport {
+    position: relative;
+    width: var(--slide-w);
+    height: var(--slide-h);
+    flex-shrink: 0;
+    overflow: hidden;
+    background: var(--color-sand);
+}
+
+/* ── DARK PANEL (top=405) ── */
+.s3-dark-panel {
+    position: absolute;
+    left: 0;
+    top: 405px;
+    right: 0;
+    bottom: 0;
+    background: var(--color-charcoal);
+}
+
+/* ── LOGO (top=120, left=100 — identical to Slide2) ── */
+.s3-logo {
+    position: absolute;
+    top: 120px;
+    left: 100px;
+    display: flex;
+    align-items: center;
+    height: 56px;
+}
+
+/* ── DATE (identical to Slide2: top=137, right=100) ── */
+.s3-date {
+    position: absolute;
+    top: 137px;
+    right: 100px;
+    font-family: var(--font-family);
+    font-weight: var(--fw-bold);
+    font-size: 26px;
+    letter-spacing: 0.12em;
+    color: var(--color-charcoal);
+    text-transform: uppercase;
+    text-align: right;
+    line-height: 1;
+}
+
+/* ── HEADLINE BLOCK (top=213, left=100) ── */
+.s3-headline-block {
+    position: absolute;
+    top: 213px;
+    left: 100px;
+    width: 889px;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+}
+
+.s3-headline__gold {
+    font-family: var(--font-family);
+    font-weight: var(--fw-regular);
+    font-size: 108px;
+    line-height: 0.93;
+    letter-spacing: 0.01em;
+    color: var(--color-gold);
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.s3-headline__sub {
+    font-family: var(--font-family);
+    font-weight: var(--fw-regular);
+    font-size: 49px;
+    line-height: 1;
+    color: var(--color-charcoal);
+    text-transform: uppercase;
+}
+
+/* ── BAR LIST (top=444, left=100) ── */
+.s3-bars {
+    position: absolute;
+    top: 444px;
+    left: 100px;
+    width: 880px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* ── SINGLE BAR ROW (logo + content) ── */
+.s3-bar-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+}
+
+/* Logo column — exactly 114×114 px per Figma */
+.s3-logo-col {
+    width: 114px;
+    height: 114px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.s3-brand-logo {
+    /* Let SVG intrinsic width/height define the natural size */
+    width: auto;
+    height: auto;
+    /* But never overflow the 114×114 container */
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* Content column: name+count + bar */
+.s3-bar-content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 23px;
+}
+
+.s3-bar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: var(--font-family);
+    font-weight: var(--fw-regular);
+    font-size: 48px;
+    line-height: 1;
+    text-transform: uppercase;
+    overflow: hidden;
+}
+
+.s3-brand-name {
+    color: #ffffff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.s3-brand-count {
+    color: #EEEDEC;
+    flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+    padding-left: 24px;
+}
+
+/* ── BAR TRACK ── */
+.s3-track {
+    width: 100%;
+    height: 16px;
+    background: rgba(30, 29, 25, 0.75);
+    border-radius: 500px;
+    overflow: hidden;
+    position: relative;
+}
+
+.s3-fill {
+    position: absolute;
+    inset: 0;
+    border-radius: 500px;
+    transform-origin: left center;
+}
+
+.s3-fill--gold {
+    background: #D49E64;
+}
+
+.s3-fill--white {
+    background: #ffffff;
+}
+
+/* ── HINT (top≈1115) ── */
+.s3-hint {
+    position: absolute;
+    top: 1115px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-family);
+    font-weight: var(--fw-regular);
+    font-size: 40px;
+    line-height: 0.93;
+    color: #7B7B7A;
+    text-transform: uppercase;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* ── CAPTION (top=1200 — identical to Slide2) ── */
+.s3-caption {
+    position: absolute;
+    top: 1200px;
+    left: 100px;
+    font-family: var(--font-family);
+    font-weight: var(--fw-regular);
+    font-size: 19px;
+    line-height: 1;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #ffffff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
