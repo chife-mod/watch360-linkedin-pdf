@@ -58,7 +58,7 @@ function SemiDonut({
     width = 880,
     height = 440,
     thickness = 120,
-    gapPx = 8,
+    gapPx = 4,
 }: {
     segments: DonutSegment[]
     width?: number
