@@ -99,14 +99,13 @@ function BrandBar({
                 <div className="s3-track">
                     <motion.div
                         className={`s3-fill s3-fill--${index === 0 ? 'gold' : 'white'}`}
-                        initial={{ scaleX: 0 }}
-                        animate={inView ? { scaleX: pct } : {}}
+                        initial={{ width: 0 }}
+                        animate={inView ? { width: `${pct * 100}%` } : {}}
                         transition={{
                             duration: 1.0,
                             delay: baseDelay + 0.1,
                             ease: EASE_PRECISION,
                         }}
-                        style={{ transformOrigin: 'left center' }}
                     />
                 </div>
             </div>

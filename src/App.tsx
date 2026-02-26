@@ -4,6 +4,11 @@ import { jsPDF } from 'jspdf'
 import './styles/global.css'
 import { Slide2 } from './components/slides/Slide2'
 import { Slide3 } from './components/slides/Slide3'
+import LOGO_BVLGARI from '/assets/brand-logos/bvlgari.svg'
+import LOGO_CITIZEN from '/assets/brand-logos/citizen.svg'
+import LOGO_ZENITH from '/assets/brand-logos/zenith.svg'
+import LOGO_ALPINA from '/assets/brand-logos/alpina.svg'
+import LOGO_PEQUIGNET from '/assets/brand-logos/pequignet.svg'
 
 const MIN = 0.2
 const MAX = 1.0
@@ -15,17 +20,28 @@ const SLIDE_H = 1350
 const GAP = 40
 const PEEK = 120   // px of next slide visible on the right
 
-const SLIDES_COUNT = 2
+const SLIDES_COUNT = 3
+
+/* ── Slide 4 data (Rank 6–10) ── */
+const SLIDE4_BRANDS = [
+    { name: 'Bvlgari', count: 7, logo: LOGO_BVLGARI },
+    { name: 'Citizen', count: 7, logo: LOGO_CITIZEN },
+    { name: 'Zenith', count: 6, logo: LOGO_ZENITH },
+    { name: 'Alpina', count: 5, logo: LOGO_ALPINA },
+    { name: 'Pequignet', count: 5, logo: LOGO_PEQUIGNET },
+]
 
 function App() {
     const [scale, setScale] = useState(DEFAULT)
     const [activeIndex, setActiveIndex] = useState(0)
     const [isExporting, setIsExporting] = useState(false)
 
-    // slideRefs — for PDF capture (native 1080×1350, no transform)
+    // slideRefs — native 1080×1350 slide elements for PDF capture
     const slideRefs = useRef<(HTMLDivElement | null)[]>([])
-    // deckRef — for swipe scroll
+    // deckRef — scroll container
     const deckRef = useRef<HTMLDivElement>(null)
+    // wrapperRef — the scaled outer container
+    const wrapperRef = useRef<HTMLDivElement>(null)
 
     const clamp = (v: number) => Math.round(Math.min(MAX, Math.max(MIN, v)) * 100) / 100
     const dec = useCallback(() => setScale(s => clamp(s - STEP)), [])
@@ -85,13 +101,28 @@ function App() {
         setActiveIndex(idx)
     }
 
-    /* ── PDF export — captures current slide at native 1080×1350 ── */
+    /* ── PDF export ── */
     const handleSavePdf = async () => {
         const slideEl = slideRefs.current[activeIndex]
-        if (!slideEl) return
+        const wrapper = wrapperRef.current
+        const deck = deckRef.current
+        if (!slideEl || !wrapper || !deck) return
 
         try {
             setIsExporting(true)
+
+            // 1. Remove CSS scale so html2canvas sees native 1080×1350
+            const prevTransform = wrapper.style.transform
+            wrapper.style.transform = 'scale(1)'
+
+            // 2. Ensure target slide is scrolled into view (deck at exact offset, no snap fight)
+            const prevSnap = deck.style.scrollSnapType
+            const prevScroll = deck.scrollLeft
+            deck.style.scrollSnapType = 'none'
+            deck.scrollLeft = activeIndex * (SLIDE_W + GAP)
+
+            // 3. Wait for layout + repaint
+            await new Promise(r => setTimeout(r, 250))
 
             const canvas = await html2canvas(slideEl, {
                 width: SLIDE_W,
@@ -101,6 +132,11 @@ function App() {
                 backgroundColor: '#F0EFEE',
                 logging: false,
             })
+
+            // 4. Restore everything
+            wrapper.style.transform = prevTransform
+            deck.style.scrollSnapType = prevSnap
+            deck.scrollLeft = prevScroll
 
             const imgData = canvas.toDataURL('image/jpeg', 0.95)
             const pdf = new jsPDF({
@@ -124,6 +160,7 @@ function App() {
                 Width = SLIDE_W + PEEK so the next slide peeks from the right.
                 The deck scrolls inside this clipped window.                     */}
             <div
+                ref={wrapperRef}
                 style={{
                     width: SLIDE_W + PEEK,
                     height: SLIDE_H,
@@ -152,12 +189,25 @@ function App() {
                         <Slide2 />
                     </div>
 
-                    {/* Slide 3 — Brand Activity */}
+                    {/* Slide 3 — Brand Activity Top 5 */}
                     <div
                         ref={el => { slideRefs.current[1] = el }}
                         style={{ width: SLIDE_W, height: SLIDE_H, flexShrink: 0 }}
                     >
                         <Slide3 />
+                    </div>
+
+                    {/* Slide 4 — Brand Activity Rank 6–10 */}
+                    <div
+                        ref={el => { slideRefs.current[2] = el }}
+                        style={{ width: SLIDE_W, height: SLIDE_H, flexShrink: 0 }}
+                    >
+                        <Slide3
+                            subtitle="Rank 6–10 by Novelties"
+                            brands={SLIDE4_BRANDS}
+                            hint=""
+                            caption="Powered by Watch360 : Data extracted from 147 references across 39 brands."
+                        />
                     </div>
 
                     {/* End spacer so last slide can snap flush */}
