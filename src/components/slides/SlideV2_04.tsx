@@ -1,13 +1,14 @@
 import './v2.css'
+import './SlideV2_04.css'
 import LOGO_SYMBOL from '/assets/logos/watch360-symbol.svg'
 import LOGO_WORDMARK from '/assets/logos/watch360-wordmark.svg'
-import LOGO_SWATCH from '/assets/brand-logos/swatch.svg'
 import LOGO_HUBLOT from '/assets/brand-logos/hublot.svg'
 import LOGO_TAG from '/assets/brand-logos/tag-heuer.svg'
 import LOGO_FC from '/assets/brand-logos/frederique-constant.svg'
-import LOGO_LV from '/assets/brand-logos/louis-vuitton.svg'
 import LOGO_BVLGARI from '/assets/brand-logos/bvlgari.svg'
-import LOGO_CITIZEN from '/assets/brand-logos/citizen.svg'
+import LOGO_LV from '/assets/brand-logos/louis-vuitton.svg'
+import LOGO_ZENITH from '/assets/brand-logos/zenith.svg'
+import LOGO_ALPINA from '/assets/brand-logos/alpina.svg'
 
 interface BrandRow {
     name: string
@@ -16,16 +17,16 @@ interface BrandRow {
 }
 
 const BRANDS: BrandRow[] = [
-    { name: 'Swatch', count: 23, logo: LOGO_SWATCH },
     { name: 'Hublot', count: 18, logo: LOGO_HUBLOT },
     { name: 'TAG Heuer', count: 10, logo: LOGO_TAG },
     { name: 'Frederique Constant', count: 8, logo: LOGO_FC },
-    { name: 'Louis Vuitton', count: 7, logo: LOGO_LV },
     { name: 'Bvlgari', count: 7, logo: LOGO_BVLGARI },
-    { name: 'Citizen', count: 7, logo: LOGO_CITIZEN },
+    { name: 'Louis Vuitton', count: 7, logo: LOGO_LV },
+    { name: 'Zenith', count: 6, logo: LOGO_ZENITH },
+    { name: 'Alpina', count: 5, logo: LOGO_ALPINA },
 ]
 
-const MAX = 23
+const MAX = 18
 
 export function SlideV2_04() {
     return (
@@ -41,7 +42,9 @@ export function SlideV2_04() {
                 <p className="v2-header__url">www.watch360.ai</p>
             </div>
 
-            <p className="v2-title">{'TOP BRANDS\n2026'}</p>
+            {/* Shared title/subtitle pattern — same as all other slides */}
+            <p className="v2-title">NOVELTIES</p>
+            <p className="v2-subtitle" style={{ top: 317 }}>JAN 2026 [TOP 7 BRANDS]</p>
 
             <div className="v2-bars">
                 {BRANDS.map((b) => (
@@ -64,6 +67,11 @@ export function SlideV2_04() {
                     </div>
                 ))}
             </div>
+
+            {/* Footnote */}
+            <p className="s04-footnote">
+                Novelties excluding $0 - $500 price range.
+            </p>
         </div>
     )
 }

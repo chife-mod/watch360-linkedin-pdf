@@ -14,7 +14,7 @@ import { SlideV2_09 } from './components/slides/SlideV2_09'
 
 const SLIDE_W = 1080
 const SLIDE_H = 1350
-const GAP = 32
+const GAP = 10
 const HUD_H = 72
 const SLIDES_COUNT = 9
 
@@ -96,26 +96,31 @@ function App() {
     }, [scrollTo])
 
     const handleSavePdf = async () => {
-        const slideEl = slideRefs.current[activeIndex]
-        if (!slideEl) return
         try {
             setIsExporting(true)
-            const prev = slideEl.style.transform
-            slideEl.style.transform = 'none'
-            await new Promise(r => setTimeout(r, 200))
-            const canvas = await html2canvas(slideEl, {
-                width: SLIDE_W, height: SLIDE_H,
-                scale: 2, useCORS: true,
-                backgroundColor: '#F0EFEE', logging: false,
-            })
-            slideEl.style.transform = prev
-            const imgData = canvas.toDataURL('image/jpeg', 0.95)
             const pdf = new jsPDF({
                 orientation: 'portrait', unit: 'px',
                 format: [SLIDE_W, SLIDE_H], hotfixes: ['px_scaling'],
             })
-            pdf.addImage(imgData, 'JPEG', 0, 0, SLIDE_W, SLIDE_H)
-            pdf.save(`watch360-slide-${activeIndex + 1}.pdf`)
+
+            for (let i = 0; i < slides.length; i++) {
+                const el = slideRefs.current[i]
+                if (!el) continue
+                const prev = el.style.transform
+                el.style.transform = 'none'
+                await new Promise(r => setTimeout(r, 200))
+                const canvas = await html2canvas(el, {
+                    width: SLIDE_W, height: SLIDE_H,
+                    scale: 2, useCORS: true,
+                    backgroundColor: '#F0EFEE', logging: false,
+                })
+                el.style.transform = prev
+                const imgData = canvas.toDataURL('image/jpeg', 0.95)
+                if (i > 0) pdf.addPage([SLIDE_W, SLIDE_H], 'portrait')
+                pdf.addImage(imgData, 'JPEG', 0, 0, SLIDE_W, SLIDE_H)
+            }
+
+            pdf.save('watch360-all-slides.pdf')
         } catch (err) {
             console.error(err)
         } finally {
@@ -125,9 +130,9 @@ function App() {
 
     const slides = [
         <SlideV2_01 />,
+        <SlideV2_04 />,
         <SlideV2_02 />,
         <SlideV2_03 />,
-        <SlideV2_04 />,
         <SlideV2_05 />,
         <SlideV2_06 />,
         <SlideV2_07 />,

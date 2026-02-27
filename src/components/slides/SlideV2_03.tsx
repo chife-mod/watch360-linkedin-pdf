@@ -41,7 +41,8 @@ export function SlideV2_03() {
                 <p className="v2-header__url">www.watch360.ai</p>
             </div>
 
-            <p className="v2-title">{'NOVELTIES\nLVMH 2026'}</p>
+            <p className="v2-title">LVMH NOVELTIES</p>
+            <p className="v2-subtitle" style={{ top: 213 + 100 * 0.93 + 11 }}>LVMH 2026 [TOP 7 BRANDS]</p>
 
             {/* Bar chart with logos */}
             <div className="v2-bars">

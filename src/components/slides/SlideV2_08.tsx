@@ -26,7 +26,8 @@ export function SlideV2_08() {
                 <p className="v2-header__url">www.watch360.ai</p>
             </div>
 
-            <p className="v2-title" style={{ whiteSpace: 'pre-line' }}>{'SPECIAL\nEDITIONS'}</p>
+            <p className="v2-title">SPECIAL EDITIONS</p>
+            <p className="v2-subtitle" style={{ top: 213 + 100 * 0.93 + 11 }}>JAN 2026 NOVELTIES</p>
 
             {/* 3 large rows */}
             <div className="v2-se-rows">

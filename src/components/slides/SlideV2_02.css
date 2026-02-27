@@ -1,44 +1,107 @@
-/* Slide 02 — All Releases (Semi-Donut) */
-.v2-donut-wrap {
+/* Slide 02 — All Releases */
+
+/* Title override: keep single line */
+.s02-title {
+    white-space: nowrap;
+}
+
+/* Subtitle — 12px below "ALL RELEASES" (title: y=213, h≈100 → 325) */
+.s02-subtitle {
     position: absolute;
-    top: 405px;
+    top: 325px;
     left: 100px;
     width: 880px;
+    font-family: 'Lato', sans-serif;
+    font-size: 49px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: #3A3935;
+    margin: 0;
 }
 
-.v2-donut-svg {
-    display: block;
-}
-
-.v2-donut-legend {
+/* Donut container — Figma group x=101, y=496, 880×440 */
+.s02-donut-wrap {
     position: absolute;
-    top: 888px;
-    /* 405 + 440 + 43 ~ legend area */
-    left: 201px;
-    width: 675px;
-    display: flex;
-    justify-content: space-between;
+    top: 496px;
+    left: 101px;
+    width: 880px;
+    height: 440px;
 }
 
-.v2-donut-legend__item {
+/* Center label — baseline of "Total Novelties" flush with donut bottom (y=440 in wrap) */
+.s02-center-label {
+    position: absolute;
+    left: 0;
+    right: 0;
+    /* donut bottom = 440px from wrap top.
+       "Total Novelties" 30px line-height, so its baseline is ~24px above bottom.
+       Place bottom of this group at y=440 */
+    bottom: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
-    width: 320px;
+    gap: 4px;
+    pointer-events: none;
 }
 
-.v2-donut-legend__num {
+.s02-center-num {
     font-family: 'Lato', sans-serif;
-    font-size: 96px;
-    font-weight: 900;
+    font-size: 104px;
+    font-weight: 400;
     line-height: 1;
+    color: #FFFFFF;
+    margin: 0;
+    text-align: center;
 }
 
-.v2-donut-legend__lbl {
+.s02-center-sub {
     font-family: 'Lato', sans-serif;
     font-size: 30px;
     font-weight: 400;
+    line-height: 1;
     color: #FFFFFF;
-    text-transform: none;
+    margin: 0;
+    text-align: center;
+}
+
+/* Legend — two columns, centered on slide */
+.s02-legend {
+    position: absolute;
+    top: 993px;
+    left: 0;
+    width: 1080px;
+    /* full slide width to center within */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 100px;
+}
+
+.s02-legend-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* CENTER labels under values */
+    gap: 8px;
+}
+
+.s02-legend-num {
+    font-family: 'Lato', sans-serif;
+    font-size: 122px;
+    font-weight: 400;
+    line-height: 1;
+    margin: 0;
+    text-align: center;
+}
+
+.s02-legend-lbl {
+    font-family: 'Lato', sans-serif;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 1;
+    color: #FFFFFF;
+    margin: 0;
+    text-align: center;
 }

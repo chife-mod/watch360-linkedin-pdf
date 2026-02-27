@@ -3,7 +3,8 @@ import { SimpleBarSlide } from './SimpleBarSlide'
 export function SlideV2_06() {
     return (
         <SimpleBarSlide
-            title={'TOP STRAP\nMATERIALS'}
+            title='STRAP MATERIALS'
+            subtitle='JAN 2026 NOVELTIES'
             rows={[
                 { label: 'Stainless Steel', count: 28 },
                 { label: 'Rubber', count: 25 },

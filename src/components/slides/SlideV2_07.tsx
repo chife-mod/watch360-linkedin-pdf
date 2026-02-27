@@ -3,7 +3,8 @@ import { SimpleBarSlide } from './SimpleBarSlide'
 export function SlideV2_07() {
     return (
         <SimpleBarSlide
-            title={'TOP DIAL\nCOLORS'}
+            title='DIAL COLORS'
+            subtitle='JAN 2026 NOVELTIES'
             rows={[
                 { label: 'Blue', count: 30 },
                 { label: 'Black', count: 22 },

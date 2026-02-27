@@ -1,62 +1,112 @@
-/* Slide 01 — Cover */
+/* =========================================
+   Slide 01 — Cover
+   ========================================= */
 
-/* JAN 2026 in charcoal — same font as v2-title, different color & position */
-.v2-title--charcoal {
-    color: #3A3935 !important;
-    top: 413px !important;
-    /* 213 + 2×108×0.93 ≈ 213+200 */
+/* Backgrounds */
+.slide01__sand {
+    position: absolute;
+    inset: 0;
+    background: #F0EFEE;
+    z-index: 0;
 }
 
-.v2-stat-row {
+.slide01__dark {
+    position: absolute;
+    top: 723px;
+    left: 0;
+    width: 1080px;
+    height: 627px;
+    /* 1350 - 723 */
+    background: #3A3935;
+    z-index: 1;
+}
+
+/* Slide 01 keeps 108px title (cover slide exception) */
+.slide01 .v2-title {
+    font-size: 108px;
+    letter-spacing: 1.08px;
+}
+
+/* JAN 2026 — charcoal variant of .v2-title */
+.slide01__jan {
+    color: #3A3935 !important;
+    top: 416px !important;
+    /* 213 + 2 × 108 × 0.93 ≈ +203 */
+    z-index: 2;
+}
+
+/* Stat cards row */
+.slide01__stats {
     position: absolute;
     top: 563px;
     left: 100px;
     width: 880px;
     height: 294px;
     display: flex;
-    background: #FFFFFF;
-    z-index: 2;
+    gap: 16px;
+    /* user-specified 16px gap */
+    z-index: 3;
 }
 
-.v2-stat-box {
+/* Individual card */
+.slide01__card {
     flex: 1;
+    background: #FFFFFF;
+    border-radius: 4px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-left: 48px;
+    gap: 12px;
+    padding: 24px 48px 40px;
+    min-width: 0;
 }
 
-.v2-stat-divider {
-    width: 1px;
-    height: 100%;
-    background: rgba(58, 57, 53, 0.12);
-    flex-shrink: 0;
+.slide01__card--shadow {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
-.v2-stat-num {
+/* Stat number */
+.slide01__num {
     font-family: 'Lato', sans-serif;
-    font-size: 120px;
-    font-weight: 300;
-    color: #3A3935;
+    font-size: 122px;
+    font-weight: 400;
     line-height: 1;
+    color: #3A3935;
+    text-transform: uppercase;
     margin: 0;
 }
 
-.v2-stat-lbl {
+/* Stat label */
+.slide01__lbl {
     font-family: 'Lato', sans-serif;
     font-size: 32px;
     font-weight: 400;
+    line-height: 1.2;
     color: #3A3935;
-    margin: 16px 0 0;
+    margin: 0;
 }
 
-.v2-cover-img {
+/* Watch image — pinned to bottom, exact Figma proportions */
+.slide01__img-wrap {
     position: absolute;
-    top: 658px;
+    bottom: 0;
     left: 0;
     width: 1080px;
-    height: 692px;
-    object-fit: cover;
-    object-position: center top;
-    z-index: 1;
+    height: 546px;
+    overflow: hidden;
+    z-index: 4;
+}
+
+.slide01__img {
+    position: absolute;
+    width: 123%;
+    /* 1080 × 1.23 = 1328.4px */
+    height: 162.27%;
+    /* 546 × 1.6227 = 886px */
+    left: -11.5%;
+    /* -124.2px */
+    top: -26.74%;
+    /* -146px */
+    max-width: none;
+    object-fit: fill;
 }

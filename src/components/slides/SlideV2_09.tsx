@@ -3,9 +3,8 @@ import { SimpleBarSlide } from './SimpleBarSlide'
 export function SlideV2_09() {
     return (
         <SimpleBarSlide
-            title={'PRICE RANGE'}
-            subtitle={'NEW RELEASES BY PRICE SEGMENT'}
-            subtitleTop={313}
+            title='PRICE RANGES'
+            subtitle='JAN 2026 NOVELTIES'
             rows={[
                 { label: '$0–$500', count: 26 },
                 { label: '$100,000–$250,000', count: 18 },

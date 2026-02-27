@@ -6,13 +6,12 @@ import COVER_IMG from '/assets/images/cover-watch.png'
 
 export function SlideV2_01() {
     return (
-        <div className="v2-slide">
-            {/* Panels */}
-            <div className="v2-top" />
-            <div className="v2-bottom" />
+        <div className="v2-slide slide01">
+            {/* Full sand background */}
+            <div className="slide01__sand" />
 
-            {/* Watch image — behind stat boxes */}
-            <img src={COVER_IMG} alt="Watch" className="v2-cover-img" />
+            {/* Dark panel — starts at y=723 (baseline of stat numbers) */}
+            <div className="slide01__dark" />
 
             {/* Header */}
             <div className="v2-header">
@@ -24,24 +23,26 @@ export function SlideV2_01() {
             </div>
 
             {/* Title: WATCH NOVELTIES (gold, 2 lines) */}
-            <p className="v2-title" style={{ top: 213 }}>
-                {'WATCH\nNOVELTIES'}
-            </p>
+            <p className="v2-title">{'WATCH\nNOVELTIES'}</p>
 
-            {/* JAN 2026 — same size, charcoal */}
-            <p className="v2-title v2-title--charcoal">JAN 2026</p>
+            {/* JAN 2026 — charcoal, same size */}
+            <p className="v2-title slide01__jan">JAN 2026</p>
 
-            {/* Stat boxes — above image */}
-            <div className="v2-stat-row">
-                <div className="v2-stat-box">
-                    <p className="v2-stat-num">147</p>
-                    <p className="v2-stat-lbl">New Models</p>
+            {/* Stat cards — exact Figma sizes */}
+            <div className="slide01__stats">
+                <div className="slide01__card slide01__card--shadow">
+                    <p className="slide01__num">147</p>
+                    <p className="slide01__lbl">New Models</p>
                 </div>
-                <div className="v2-stat-divider" />
-                <div className="v2-stat-box">
-                    <p className="v2-stat-num">39</p>
-                    <p className="v2-stat-lbl">Watch Brands</p>
+                <div className="slide01__card">
+                    <p className="slide01__num">39</p>
+                    <p className="slide01__lbl">Watch Brands</p>
                 </div>
+            </div>
+
+            {/* Watch image — pinned to bottom, full width */}
+            <div className="slide01__img-wrap">
+                <img src={COVER_IMG} alt="Watch" className="slide01__img" />
             </div>
         </div>
     )

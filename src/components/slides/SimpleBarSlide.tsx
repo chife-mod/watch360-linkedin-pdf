@@ -14,9 +14,8 @@ interface Props {
 
 export function SimpleBarSlide({ title, subtitle, rows, subtitleTop }: Props) {
     const max = Math.max(...rows.map(r => r.count))
-    // Title height: 1 line ≈ 100px, 2 lines ≈ 200px
-    const titleLines = title.split('\n').length
-    const computedSubTop = 213 + titleLines * 108 * 0.93 + 10
+    // Title is 1 visible line at 100px (no forced \n), subtitle right below
+    const defaultSubTop = 213 + 100 * 0.93 + 11  // ≈ 317
 
     return (
         <div className="v2-slide">
@@ -36,7 +35,7 @@ export function SimpleBarSlide({ title, subtitle, rows, subtitleTop }: Props) {
             {subtitle && (
                 <p
                     className="v2-subtitle"
-                    style={{ top: subtitleTop ?? computedSubTop }}
+                    style={{ top: subtitleTop ?? defaultSubTop }}
                 >
                     {subtitle}
                 </p>
