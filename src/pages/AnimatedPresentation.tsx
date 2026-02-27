@@ -386,6 +386,7 @@ export function AnimatedPresentation() {
             if (count) {
                 const target = parseInt(count.getAttribute('data-target') || '0')
                 const obj = { val: 0 }
+                tl.set(count, { opacity: 1 }, `${pos}+=0.6+=${delay}`)
                 tl.to(obj, {
                     val: target,
                     duration: 0.8,
@@ -435,6 +436,7 @@ export function AnimatedPresentation() {
             if (count) {
                 const target = parseInt(count.getAttribute('data-target') || '0')
                 const obj = { val: 0 }
+                tl.set(count, { opacity: 1 }, `${pos}+=0.55+=${delay}`)
                 tl.to(obj, {
                     val: target,
                     duration: 0.7,
@@ -480,6 +482,7 @@ export function AnimatedPresentation() {
             if (count) {
                 const target = parseInt(count.getAttribute('data-target') || '0')
                 const obj = { val: 0 }
+                tl.set(count, { opacity: 1 }, `${pos}+=0.6+=${delay}`)
                 tl.to(obj, {
                     val: target,
                     duration: 1.0,
