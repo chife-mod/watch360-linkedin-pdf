@@ -181,7 +181,7 @@
     font-weight: 400;
     line-height: 1;
     text-transform: uppercase;
-    color: #EEEDEC;
+    color: #D49E64;
     margin: 0;
     flex-shrink: 0;
     text-align: right;
@@ -198,7 +198,7 @@
 .v2-bar-fill {
     height: 100%;
     border-radius: 500px;
-    background: #FFFFFF;
+    background: #979797;
 }
 
 /* ── Simple bar rows (no logos: slides 05-09) ── */
@@ -244,7 +244,7 @@
     font-size: 32px;
     font-weight: 400;
     line-height: 1;
-    color: #EEEDEC;
+    color: #D49E64;
     margin: 0;
     text-align: right;
 }
