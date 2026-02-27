@@ -6,8 +6,8 @@ import LOGO_BVLGARI from '/assets/brand-logos/bvlgari.svg'
 import LOGO_LV from '/assets/brand-logos/louis-vuitton.svg'
 import LOGO_TAG from '/assets/brand-logos/tag-heuer.svg'
 import LOGO_ZENITH from '/assets/brand-logos/zenith.svg'
-import LOGO_GG from '/assets/brand-logos/gerald-genta.svg'
-import LOGO_DR from '/assets/brand-logos/daniel-roth.svg'
+import LOGO_GG from '/assets/brand-logos/gerald-genta.png'
+import LOGO_DR from '/assets/brand-logos/daniel-roth.png'
 
 interface BrandRow {
     name: string
