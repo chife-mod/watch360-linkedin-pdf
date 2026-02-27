@@ -63,66 +63,132 @@ body {
 }
 
 #root {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  min-height: 100vh;
-  padding: 40px 40px 100px;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
   background: #1a1917;
 }
 
-/* ── Slide Deck (horizontal snap scroll) ── */
+/* ── Slide Deck: horizontal scrolling strip above HUD ── */
 .slide-deck {
   display: flex;
   flex-direction: row;
-  gap: 0;
-  /* gap controlled inline via GAP constant */
+  gap: 32px;
   overflow-x: auto;
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  width: 100%;
-  height: 100%;
+  align-items: center;
+  width: 100vw;
+  height: calc(100vh - 72px);
+  /* 72px = HUD height */
+  padding: 0 40px;
+  box-sizing: border-box;
 }
 
 .slide-deck::-webkit-scrollbar {
   display: none;
 }
 
-/* snap on actual slide wrappers (not the end-spacer) */
-.slide-deck>div[style*='flex-shrink: 0'] {
+/* ── Each slide outer wrapper: layout uses visual (scaled) dimensions ── */
+.slide-outer {
+  flex-shrink: 0;
+  overflow: hidden;
   scroll-snap-align: start;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 0 0 0px transparent;
+  transition: box-shadow 0.25s ease;
 }
 
-/* ── Pagination dots (floats above HUD, left side) ── */
+/* Active slide: gold ring */
+.slide-outer--active {
+  box-shadow: 0 0 0 3px #A98155, 0 8px 40px rgba(169, 129, 85, 0.20);
+  cursor: default;
+}
+
+
+/* ── Pagination: numbered + arrows ── */
 .pagination {
   position: fixed;
   bottom: 80px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 8px;
+  gap: 4px;
   align-items: center;
   z-index: 10000;
+  background: rgba(26, 25, 23, 0.80);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 100px;
+  padding: 6px 8px;
 }
 
-.pagination-dot {
-  width: 8px;
-  height: 8px;
+/* Arrow buttons ‹ › */
+.pagination-arrow {
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  border: none;
-  background: rgba(255, 255, 255, 0.25);
-  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
+  transition: color 0.18s, border-color 0.18s, background 0.18s, transform 0.1s;
   flex-shrink: 0;
 }
 
-.pagination-dot--active {
-  background: #A98155;
-  transform: scale(1.35);
+.pagination-arrow:hover:not(:disabled) {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.pagination-arrow:active:not(:disabled) {
+  transform: scale(0.90);
+}
+
+.pagination-arrow:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+/* Number buttons 01 02 ... */
+.pagination-num {
+  min-width: 36px;
+  height: 32px;
+  padding: 0 4px;
+  border-radius: 100px;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.38);
+  font-family: 'Lato', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: color 0.18s, background 0.18s, transform 0.12s;
+  flex-shrink: 0;
+}
+
+.pagination-num:hover {
+  color: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.pagination-num--active {
+  color: #A98155;
+  background: rgba(169, 129, 85, 0.14);
+}
+
+.pagination-num--active:hover {
+  color: #c9a47b;
+  background: rgba(169, 129, 85, 0.22);
 }
 
 .scale-hud {
