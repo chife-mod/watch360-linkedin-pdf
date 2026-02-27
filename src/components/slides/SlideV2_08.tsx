@@ -5,12 +5,12 @@ import LOGO_WORDMARK from '/assets/logos/watch360-wordmark.svg'
 
 // Slide 08 — Special Editions: only 3 rows, larger spacing, no logos
 const DATA = [
-    { label: 'Limited Edition', count: 37 },
-    { label: 'Celebrity / Collab', count: 9 },
-    { label: 'Manufacture', count: 3 },
+    { label: 'Limited Edition', count: 39 },
+    { label: 'Partnership Edition', count: 9 },
+    { label: 'Anniversary Edition', count: 3 },
 ]
 
-const MAX = 37
+const MAX = 39
 
 export function SlideV2_08() {
     return (
