@@ -3,7 +3,7 @@ import LOGO_SYMBOL from '/assets/logos/watch360-symbol.svg'
 import LOGO_WORDMARK from '/assets/logos/watch360-wordmark.svg'
 
 // Reusable simple bar slide — no logos, 10 rows, 56px height / 21px gap
-interface SimpleRow { label: string; count: number }
+interface SimpleRow { label: string; count: number; color?: string }
 
 interface Props {
     title: string
@@ -15,7 +15,6 @@ interface Props {
 
 export function SimpleBarSlide({ title, subtitle, rows, subtitleTop, noUppercaseLabels }: Props) {
     const max = Math.max(...rows.map(r => r.count))
-    // Title is 1 visible line at 100px (no forced \n), subtitle right below
     const defaultSubTop = 213 + 100 * 0.93 + 11  // ≈ 317
 
     return (
@@ -34,10 +33,7 @@ export function SimpleBarSlide({ title, subtitle, rows, subtitleTop, noUppercase
             <p className="v2-title" style={{ whiteSpace: 'pre-line' }}>{title}</p>
 
             {subtitle && (
-                <p
-                    className="v2-subtitle"
-                    style={{ top: subtitleTop ?? defaultSubTop }}
-                >
+                <p className="v2-subtitle" style={{ top: subtitleTop ?? defaultSubTop }}>
                     {subtitle}
                 </p>
             )}
@@ -47,6 +43,19 @@ export function SimpleBarSlide({ title, subtitle, rows, subtitleTop, noUppercase
                 {rows.map((r) => (
                     <div key={r.label} className="v2-bar-row--simple">
                         <div className="v2-bar-label-row--simple">
+                            {/* Color swatch circle — luxury watch palette */}
+                            {r.color && (
+                                <div style={{
+                                    width: 32,
+                                    height: 32,
+                                    borderRadius: '50%',
+                                    backgroundColor: r.color,
+                                    flexShrink: 0,
+                                    marginRight: 14,
+                                    border: '1px solid rgba(240,239,238,0.25)',
+                                    boxSizing: 'border-box',
+                                }} />
+                            )}
                             <p className="v2-bar-label--simple">{noUppercaseLabels ? r.label : r.label.toUpperCase()}</p>
                             <p className="v2-bar-count--simple">{r.count}</p>
                         </div>
