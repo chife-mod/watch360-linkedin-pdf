@@ -6,13 +6,14 @@ import LOGO_WORDMARK from '/assets/logos/watch360-wordmark.svg'
 interface SimpleRow { label: string; count: number }
 
 interface Props {
-    title: string          // Shown as pre-line (use \n for 2nd line)
-    subtitle?: string      // Optional line below title in charcoal
+    title: string
+    subtitle?: string
     rows: SimpleRow[]
-    subtitleTop?: number   // absolute Y; default: auto after title
+    subtitleTop?: number
+    noUppercaseLabels?: boolean
 }
 
-export function SimpleBarSlide({ title, subtitle, rows, subtitleTop }: Props) {
+export function SimpleBarSlide({ title, subtitle, rows, subtitleTop, noUppercaseLabels }: Props) {
     const max = Math.max(...rows.map(r => r.count))
     // Title is 1 visible line at 100px (no forced \n), subtitle right below
     const defaultSubTop = 213 + 100 * 0.93 + 11  // ≈ 317
@@ -46,7 +47,7 @@ export function SimpleBarSlide({ title, subtitle, rows, subtitleTop }: Props) {
                 {rows.map((r) => (
                     <div key={r.label} className="v2-bar-row--simple">
                         <div className="v2-bar-label-row--simple">
-                            <p className="v2-bar-label--simple">{r.label.toUpperCase()}</p>
+                            <p className="v2-bar-label--simple">{noUppercaseLabels ? r.label : r.label.toUpperCase()}</p>
                             <p className="v2-bar-count--simple">{r.count}</p>
                         </div>
                         <div className="v2-bar-track--simple">

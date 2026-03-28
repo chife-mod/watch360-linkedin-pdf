@@ -86,7 +86,7 @@
     margin: 0;
 }
 
-/* Watch image — pinned to bottom, exact Figma proportions */
+/* Watch image — natural proportions, no distortion */
 .slide01__img-wrap {
     position: absolute;
     bottom: 0;
@@ -98,15 +98,9 @@
 }
 
 .slide01__img {
-    position: absolute;
-    width: 123%;
-    /* 1080 × 1.23 = 1328.4px */
-    height: 162.27%;
-    /* 546 × 1.6227 = 886px */
-    left: -11.5%;
-    /* -124.2px */
-    top: -26.74%;
-    /* -146px */
-    max-width: none;
-    object-fit: fill;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
 }
