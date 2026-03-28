@@ -2,20 +2,24 @@ import './v2.css'
 import LOGO_SYMBOL from '/assets/logos/watch360-symbol.svg'
 import LOGO_WORDMARK from '/assets/logos/watch360-wordmark.svg'
 
+import LOGO_AP       from '/assets/logos/audemars_piguet.svg'
+import LOGO_SEIKO    from '/assets/logos/seiko.svg'
+import LOGO_BREITLING from '/assets/logos/breitling.svg'
+
+import IMG_AP_A010      from '/assets/watches/ap_a010.png'
+import IMG_AP_A355      from '/assets/watches/ap_a355.png'
+import IMG_SRPM09       from '/assets/watches/srpm09.png'
+import IMG_BREITLING_EB01 from '/assets/watches/breitling_eb01.png'
+import IMG_AP_A403      from '/assets/watches/ap_a403.png'
+
 /* Feb 2026 — Refs in Media [6–10] */
 const MODELS = [
-    { brand: 'audemars_piguet', name: 'Audemars Piguet Royal Oak Offshore',             ref: '15720ST.OO.A010CA.01', img: '/assets/watches/ap_a010.png' },
-    { brand: 'audemars_piguet', name: 'Audemars Piguet Royal Oak Offshore',             ref: '15720ST.OO.A355CA.01', img: '/assets/watches/ap_a355.png' },
-    { brand: 'seiko',           name: 'Seiko 5 Sports SRPM09',                          ref: 'SRPM09',              img: '/assets/watches/srpm09.png'   },
-    { brand: 'breitling',       name: 'Breitling Navitimer B01 Chrono 43 Aston Martin', ref: 'EB01381A1B1X1',       img: '/assets/watches/breitling_eb01.png' },
-    { brand: 'audemars_piguet', name: 'Audemars Piguet Royal Oak Offshore',             ref: '15720ST.OO.A403CA.01', img: '/assets/watches/ap_a403.png' },
+    { logo: LOGO_AP,        name: 'Audemars Piguet Royal Oak Offshore',             ref: '15720ST.OO.A010CA.01',  img: IMG_AP_A010        },
+    { logo: LOGO_AP,        name: 'Audemars Piguet Royal Oak Offshore',             ref: '15720ST.OO.A355CA.01',  img: IMG_AP_A355        },
+    { logo: LOGO_SEIKO,     name: 'Seiko 5 Sports SRPM09',                          ref: 'SRPM09',                img: IMG_SRPM09         },
+    { logo: LOGO_BREITLING, name: 'Breitling Navitimer B01 Chrono 43 Aston Martin', ref: 'EB01381A1B1X1',         img: IMG_BREITLING_EB01 },
+    { logo: LOGO_AP,        name: 'Audemars Piguet Royal Oak Offshore',             ref: '15720ST.OO.A403CA.01',  img: IMG_AP_A403        },
 ]
-
-const LOGO_MAP: Record<string, string> = {
-    audemars_piguet: '/assets/logos/audemars_piguet.svg',
-    seiko:           '/assets/logos/seiko.svg',
-    breitling:       '/assets/logos/breitling.svg',
-}
 
 const SQ = 136
 const RADIUS = 6
@@ -35,10 +39,8 @@ export function SlideV2Feb_10b() {
             </div>
 
             <p className="v2-title">REFS IN MEDIA</p>
-            {/* subtitle left-aligned at left:100px (v2-subtitle класс) */}
             <p className="v2-subtitle" style={{ top: 317 }}>FEB 2026 WATCH MEDIA [6–10]</p>
 
-            {/* Rows */}
             <div style={{
                 position: 'absolute',
                 top: 445,
@@ -52,9 +54,7 @@ export function SlideV2Feb_10b() {
                 {MODELS.map((m, i) => (
                     <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 41, height: SQ }}>
 
-                        {/* Two equal 136×136 squares */}
                         <div style={{ display: 'flex', gap: 4, flexShrink: 0 }}>
-                            {/* Square 1: brand logo */}
                             <div style={{
                                 width: SQ, height: SQ, flexShrink: 0,
                                 background: '#FFFFFF',
@@ -65,10 +65,8 @@ export function SlideV2Feb_10b() {
                                 padding: 16,
                                 boxSizing: 'border-box',
                             }}>
-                                <img src={LOGO_MAP[m.brand]} alt={m.brand}
-                                    style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
+                                <img src={m.logo} alt="" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
                             </div>
-                            {/* Square 2: watch photo */}
                             <div style={{
                                 width: SQ, height: SQ, flexShrink: 0,
                                 background: '#FFFFFF',
@@ -77,12 +75,10 @@ export function SlideV2Feb_10b() {
                                 padding: 12,
                                 boxSizing: 'border-box',
                             }}>
-                                <img src={m.img} alt={m.name}
-                                    style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 2 }} />
+                                <img src={m.img} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 2 }} />
                             </div>
                         </div>
 
-                        {/* Text */}
                         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 16 }}>
                             <p style={{
                                 fontFamily: "'Lato', sans-serif", fontSize: 32, fontWeight: 400,

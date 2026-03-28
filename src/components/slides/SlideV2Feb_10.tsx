@@ -2,22 +2,26 @@ import './v2.css'
 import LOGO_SYMBOL from '/assets/logos/watch360-symbol.svg'
 import LOGO_WORDMARK from '/assets/logos/watch360-wordmark.svg'
 
+import LOGO_PANERAI from '/assets/logos/panerai.svg'
+import LOGO_IWC     from '/assets/logos/iwc.svg'
+
+import IMG_PAM01729 from '/assets/watches/pam01729.png'
+import IMG_PAM01730 from '/assets/watches/pam01730.png'
+import IMG_IW371631 from '/assets/watches/iw371631.png'
+import IMG_IW328107 from '/assets/watches/iw328107.png'
+import IMG_IW389411 from '/assets/watches/iw389411.png'
+
 /* Feb 2026 — Refs in Media [1–5] */
 const MODELS = [
-    { brand: 'panerai', name: 'Panerai Radiomir California Bronzo',              ref: 'PAM01729', img: '/assets/watches/pam01729.png' },
-    { brand: 'panerai', name: 'Panerai Radiomir Platinumtech™',                  ref: 'PAM01730', img: '/assets/watches/pam01730.png' },
-    { brand: 'iwc',     name: 'IWC Portugieser Chronograph Ceratanium®',         ref: 'IW371631', img: '/assets/watches/iw371631.png' },
-    { brand: 'iwc',     name: "IWC Pilot's Watch Automatic 41 George Russell",   ref: 'IW328107', img: '/assets/watches/iw328107.png' },
-    { brand: 'iwc',     name: "IWC Pilot's Watch Chronograph 41 George Russell", ref: 'IW389411', img: '/assets/watches/iw389411.png' },
+    { logo: LOGO_PANERAI, name: 'Panerai Radiomir California Bronzo',              ref: 'PAM01729', img: IMG_PAM01729 },
+    { logo: LOGO_PANERAI, name: 'Panerai Radiomir Platinumtech™',                  ref: 'PAM01730', img: IMG_PAM01730 },
+    { logo: LOGO_IWC,     name: 'IWC Portugieser Chronograph Ceratanium®',         ref: 'IW371631', img: IMG_IW371631 },
+    { logo: LOGO_IWC,     name: "IWC Pilot's Watch Automatic 41 George Russell",   ref: 'IW328107', img: IMG_IW328107 },
+    { logo: LOGO_IWC,     name: "IWC Pilot's Watch Chronograph 41 George Russell", ref: 'IW389411', img: IMG_IW389411 },
 ]
 
-const LOGO_MAP: Record<string, string> = {
-    panerai: '/assets/logos/panerai.svg',
-    iwc:     '/assets/logos/iwc.svg',
-}
-
-const SQ = 136      // each square: 136×136px
-const RADIUS = 6    // matches .v2-logo-box border-radius
+const SQ = 136
+const RADIUS = 6
 
 export function SlideV2Feb_10() {
     return (
@@ -36,7 +40,6 @@ export function SlideV2Feb_10() {
             <p className="v2-title">REFS IN MEDIA</p>
             <p className="v2-subtitle" style={{ top: 317 }}>FEB 2026 WATCH MEDIA [1–5]</p>
 
-            {/* Rows */}
             <div style={{
                 position: 'absolute',
                 top: 445,
@@ -50,9 +53,7 @@ export function SlideV2Feb_10() {
                 {MODELS.map((m, i) => (
                     <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 41, height: SQ }}>
 
-                        {/* Two equal 136×136 squares */}
                         <div style={{ display: 'flex', gap: 4, flexShrink: 0 }}>
-                            {/* Square 1: brand logo */}
                             <div style={{
                                 width: SQ, height: SQ, flexShrink: 0,
                                 background: '#FFFFFF',
@@ -63,10 +64,8 @@ export function SlideV2Feb_10() {
                                 padding: 16,
                                 boxSizing: 'border-box',
                             }}>
-                                <img src={LOGO_MAP[m.brand]} alt={m.brand}
-                                    style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
+                                <img src={m.logo} alt="" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
                             </div>
-                            {/* Square 2: watch photo */}
                             <div style={{
                                 width: SQ, height: SQ, flexShrink: 0,
                                 background: '#FFFFFF',
@@ -75,12 +74,10 @@ export function SlideV2Feb_10() {
                                 padding: 12,
                                 boxSizing: 'border-box',
                             }}>
-                                <img src={m.img} alt={m.name}
-                                    style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 2 }} />
+                                <img src={m.img} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 2 }} />
                             </div>
                         </div>
 
-                        {/* Text */}
                         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 16 }}>
                             <p style={{
                                 fontFamily: "'Lato', sans-serif", fontSize: 32, fontWeight: 400,
@@ -94,8 +91,6 @@ export function SlideV2Feb_10() {
                     </div>
                 ))}
             </div>
-
-
         </div>
     )
 }
