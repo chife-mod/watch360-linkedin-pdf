@@ -41,29 +41,37 @@ export function SimpleBarSlide({ title, subtitle, rows, subtitleTop, noUppercase
             {/* Simple bar rows */}
             <div className="v2-bars--simple">
                 {rows.map((r) => (
-                    <div key={r.label} className="v2-bar-row--simple">
-                        <div className="v2-bar-label-row--simple">
-                            {/* Color swatch circle — luxury watch palette */}
-                            {r.color && (
+                    <div key={r.label} style={{ display: 'flex', alignItems: 'center', gap: 24, width: 880 }}>
+                        {r.color && (
+                            <div style={{
+                                width: 56,
+                                height: 56,
+                                borderRadius: '50%',
+                                backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                flexShrink: 0,
+                            }}>
                                 <div style={{
-                                    width: 32,
-                                    height: 32,
+                                    width: 20,
+                                    height: 20,
                                     borderRadius: '50%',
                                     backgroundColor: r.color,
-                                    flexShrink: 0,
-                                    marginRight: 14,
-                                    border: '1px solid rgba(240,239,238,0.25)',
-                                    boxSizing: 'border-box',
                                 }} />
-                            )}
-                            <p className="v2-bar-label--simple">{noUppercaseLabels ? r.label : r.label.toUpperCase()}</p>
-                            <p className="v2-bar-count--simple">{r.count}</p>
-                        </div>
-                        <div className="v2-bar-track--simple">
-                            <div
-                                className="v2-bar-fill"
-                                style={{ height: '100%', width: `${(r.count / max) * 100}%` }}
-                            />
+                            </div>
+                        )}
+                        <div className="v2-bar-row--simple" style={r.color ? { width: 800 } : undefined}>
+                            <div className="v2-bar-label-row--simple">
+                                <p className="v2-bar-label--simple">{noUppercaseLabels ? r.label : r.label.toUpperCase()}</p>
+                                <p className="v2-bar-count--simple">{r.count}</p>
+                            </div>
+                            <div className="v2-bar-track--simple">
+                                <div
+                                    className="v2-bar-fill"
+                                    style={{ height: '100%', width: `${(r.count / max) * 100}%` }}
+                                />
+                            </div>
                         </div>
                     </div>
                 ))}
