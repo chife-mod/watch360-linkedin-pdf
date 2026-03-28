@@ -19,7 +19,7 @@ const LOGO_MAP: Record<string, string> = {
 
 const SQ = 136
 const RADIUS = 6
-const PAD = 8
+const PAD = 12
 
 export function SlideV2Feb_10b() {
     return (
@@ -37,7 +37,7 @@ export function SlideV2Feb_10b() {
 
             <p className="v2-title">REFS IN MEDIA</p>
             {/* subtitle left-aligned at left:100px (v2-subtitle класс) */}
-            <p className="v2-subtitle" style={{ top: 317 }}>DEC 2025 — FEB 2026 [6–10]</p>
+            <p className="v2-subtitle" style={{ top: 317 }}>FEB 2026 WATCH MEDIA [6–10]</p>
 
             {/* Rows */}
             <div style={{
@@ -54,11 +54,11 @@ export function SlideV2Feb_10b() {
                     <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 41, height: SQ }}>
 
                         {/* Two equal 136×136 squares */}
-                        <div style={{ display: 'flex', gap: 3, flexShrink: 0 }}>
+                        <div style={{ display: 'flex', gap: 4, flexShrink: 0 }}>
                             {/* Square 1: brand logo */}
                             <div style={{
                                 width: SQ, height: SQ, flexShrink: 0,
-                                background: '#F0EFEE',
+                                background: '#FFFFFF',
                                 borderRadius: RADIUS,
                                 display: 'flex',
                                 alignItems: 'center',
@@ -72,7 +72,7 @@ export function SlideV2Feb_10b() {
                             {/* Square 2: watch photo */}
                             <div style={{
                                 width: SQ, height: SQ, flexShrink: 0,
-                                background: '#F0EFEE',
+                                background: '#FFFFFF',
                                 borderRadius: RADIUS,
                                 overflow: 'hidden',
                                 padding: PAD,

@@ -18,7 +18,7 @@ const LOGO_MAP: Record<string, string> = {
 
 const SQ = 136      // each square: 136×136px
 const RADIUS = 6    // matches .v2-logo-box border-radius
-const PAD = 8       // inner padding for both squares
+const PAD = 12       // inner padding for both squares
 
 export function SlideV2Feb_10() {
     return (
@@ -35,7 +35,7 @@ export function SlideV2Feb_10() {
             </div>
 
             <p className="v2-title">REFS IN MEDIA</p>
-            <p className="v2-subtitle" style={{ top: 317 }}>DEC 2025 — FEB 2026 [1–5]</p>
+            <p className="v2-subtitle" style={{ top: 317 }}>FEB 2026 WATCH MEDIA [1–5]</p>
 
             {/* Rows */}
             <div style={{
@@ -52,11 +52,11 @@ export function SlideV2Feb_10() {
                     <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 41, height: SQ }}>
 
                         {/* Two equal 136×136 squares */}
-                        <div style={{ display: 'flex', gap: 3, flexShrink: 0 }}>
+                        <div style={{ display: 'flex', gap: 4, flexShrink: 0 }}>
                             {/* Square 1: brand logo */}
                             <div style={{
                                 width: SQ, height: SQ, flexShrink: 0,
-                                background: '#F0EFEE',
+                                background: '#FFFFFF',
                                 borderRadius: RADIUS,
                                 display: 'flex',
                                 alignItems: 'center',
@@ -70,7 +70,7 @@ export function SlideV2Feb_10() {
                             {/* Square 2: watch photo */}
                             <div style={{
                                 width: SQ, height: SQ, flexShrink: 0,
-                                background: '#F0EFEE',
+                                background: '#FFFFFF',
                                 borderRadius: RADIUS,
                                 overflow: 'hidden',
                                 padding: PAD,
