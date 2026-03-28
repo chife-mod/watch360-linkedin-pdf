@@ -35,7 +35,7 @@ export function SlideV2Feb_15b() {
                 <p className="v2-header__url">www.watch360.ai</p>
             </div>
 
-            <p className="v2-title">PRODUCT LINES</p>
+            <p className="v2-title">COLLECTION</p>
             <p className="v2-subtitle" style={{ top: 317 }}>FEB 2026 NOVELTIES [6–10]</p>
 
             <div style={{
