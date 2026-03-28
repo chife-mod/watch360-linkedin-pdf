@@ -18,7 +18,6 @@ const LOGO_MAP: Record<string, string> = {
 
 const SQ = 136      // each square: 136×136px
 const RADIUS = 6    // matches .v2-logo-box border-radius
-const PAD = 12       // inner padding for both squares
 
 export function SlideV2Feb_10() {
     return (
@@ -61,7 +60,7 @@ export function SlideV2Feb_10() {
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
-                                padding: PAD,
+                                padding: 16,
                                 boxSizing: 'border-box',
                             }}>
                                 <img src={LOGO_MAP[m.brand]} alt={m.brand}
@@ -73,7 +72,7 @@ export function SlideV2Feb_10() {
                                 background: '#FFFFFF',
                                 borderRadius: RADIUS,
                                 overflow: 'hidden',
-                                padding: PAD,
+                                padding: 12,
                                 boxSizing: 'border-box',
                             }}>
                                 <img src={m.img} alt={m.name}
