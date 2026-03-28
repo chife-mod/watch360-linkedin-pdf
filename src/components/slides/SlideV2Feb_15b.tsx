@@ -57,13 +57,13 @@ export function SlideV2Feb_15b() {
                         }}>
                             <img src={WATCH_PHOTO} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
                         </div>
-                        <div className="v2-bar-content" style={{ flex: 1, marginLeft: 0 }}>
-                            <div className="v2-bar-label-row">
-                                <p className="v2-bar-label" style={{ fontSize: 32, textTransform: 'uppercase' }}>{b.label}</p>
-                                <p className="v2-bar-count" style={{ fontSize: 32 }}>{b.count}</p>
+                        <div className="v2-bar-row--simple" style={{ flex: 1 }}>
+                            <div className="v2-bar-label-row--simple">
+                                <p className="v2-bar-label--simple">{b.label}</p>
+                                <p className="v2-bar-count--simple">{b.count}</p>
                             </div>
-                            <div className="v2-bar-track">
-                                <div className="v2-bar-fill" style={{ width: `${(b.count / MAX) * 100}%` }} />
+                            <div className="v2-bar-track--simple">
+                                <div className="v2-bar-fill" style={{ height: '100%', width: `${(b.count / MAX) * 100}%` }} />
                             </div>
                         </div>
                     </div>
