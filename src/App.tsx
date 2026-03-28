@@ -27,7 +27,6 @@ import { SlideV2Feb_10 } from './components/slides/SlideV2Feb_10'
 import { SlideV2Feb_10b } from './components/slides/SlideV2Feb_10b'
 import { SlideV2Feb_11 } from './components/slides/SlideV2Feb_11'
 import { SlideV2Feb_12 } from './components/slides/SlideV2Feb_12'
-import { SlideV2Feb_13 } from './components/slides/SlideV2Feb_13'
 import { SlideV2Feb_14 } from './components/slides/SlideV2Feb_14'
 import { SlideV2Feb_15 } from './components/slides/SlideV2Feb_15'
 
@@ -51,7 +50,6 @@ const REPORTS = [
             <SlideV2Feb_10b />, // 09 Discussed Novelties [6–10]
             <SlideV2Feb_11 />,  // 09 Case Diameter
             <SlideV2Feb_12 />,  // 10 Case Height
-            <SlideV2Feb_13 />,  // 11 Movement
             <SlideV2Feb_14 />,  // 12 Watch Functions
             <SlideV2Feb_15 />,  // 13 Product Lines
         ],

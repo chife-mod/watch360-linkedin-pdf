@@ -95,19 +95,7 @@ export function SlideV2Feb_10() {
                 ))}
             </div>
 
-            {/* Note — left-aligned at 100px, same as title */}
-            <p style={{
-                position: 'absolute',
-                left: 100,
-                bottom: 60,
-                fontFamily: "'Lato', sans-serif",
-                fontSize: 26,
-                fontWeight: 400,
-                color: '#7B7B7A',
-                margin: 0,
-                lineHeight: 1,
-                zIndex: 2,
-            }}>Top 5 shown. See Rank 6–10 →</p>
+
         </div>
     )
 }
