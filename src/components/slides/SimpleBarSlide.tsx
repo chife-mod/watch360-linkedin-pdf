@@ -54,8 +54,8 @@ export function SimpleBarSlide({ title, subtitle, rows, subtitleTop, noUppercase
                                 flexShrink: 0,
                             }}>
                                 <div style={{
-                                    width: 50,
-                                    height: 50,
+                                    width: 44,
+                                    height: 44,
                                     borderRadius: '50%',
                                     backgroundColor: r.color,
                                 }} />
