@@ -5,7 +5,7 @@ export function SlideV2Feb_14() {
     return (
         <SimpleBarSlide
             title='FUNCTIONS'
-            subtitle='WATCH · FEB 2026 NOVELTIES'
+            subtitle='FEB 2026 NOVELTIES'
             rows={[
                 { label: 'Date',               count: 93 },
                 { label: 'Sweeping Seconds',    count: 76 },

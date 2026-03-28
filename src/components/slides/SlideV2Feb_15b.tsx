@@ -4,19 +4,19 @@ import LOGO_WORDMARK from '/assets/logos/watch360-wordmark.svg'
 
 import WATCH_PHOTO from '/assets/watches/ap_a010.png'
 
-const LINES_1_5 = [
-    { label: 'Audemars Piguet Royal Oak', count: 11 },
-    { label: 'D1 Milano Ultra Thin',      count: 9  },
-    { label: 'Nivada F77 MKII',           count: 9  },
-    { label: 'Delbana Rotonda',           count: 8  },
-    { label: 'Casio EDIFICE',             count: 8  },
+const LINES_6_10 = [
+    { label: 'Raymond Weil Millesime',    count: 7 },
+    { label: 'Hublot Big Bang',           count: 7 },
+    { label: 'Hamilton Jazzmaster',       count: 7 },
+    { label: 'D1 Milano Polycarbon',      count: 5 },
+    { label: 'D1 Milano Polychrono',      count: 5 },
 ]
 
 const MAX = 11
 const SQ = 136
 const RADIUS = 6
 
-export function SlideV2Feb_15() {
+export function SlideV2Feb_15b() {
     return (
         <div className="v2-slide">
             <div className="v2-top" />
@@ -31,7 +31,7 @@ export function SlideV2Feb_15() {
             </div>
 
             <p className="v2-title">PRODUCT LINES</p>
-            <p className="v2-subtitle" style={{ top: 317 }}>FEB 2026 NOVELTIES [1–5]</p>
+            <p className="v2-subtitle" style={{ top: 317 }}>FEB 2026 NOVELTIES [6–10]</p>
 
             <div style={{
                 position: 'absolute',
@@ -43,7 +43,7 @@ export function SlideV2Feb_15() {
                 flexDirection: 'column',
                 gap: 20,
             }}>
-                {LINES_1_5.map((b) => (
+                {LINES_6_10.map((b) => (
                     <div key={b.label} style={{ display: 'flex', alignItems: 'center', gap: 32, height: SQ }}>
                         <div style={{
                             width: SQ, height: SQ, flexShrink: 0,
