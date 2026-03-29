@@ -94,9 +94,19 @@ export function SlideV2Feb_15b() {
                         </div>
 
                         {/* Bar */}
-                        <div className="v2-bar-row--simple" style={{ flex: 1 }}>
-                            <div className="v2-bar-label-row--simple">
-                                <p className="v2-bar-label--simple">{b.label}</p>
+                        <div className="v2-bar-row--simple" style={{ 
+                            flex: 1, 
+                            height: '100%', 
+                            justifyContent: 'flex-end', 
+                            paddingBottom: 40, 
+                            boxSizing: 'border-box' 
+                        }}>
+                            <div className="v2-bar-label-row--simple" style={{ height: 'auto', alignItems: 'flex-end' }}>
+                                <p className="v2-bar-label--simple" style={{ 
+                                    whiteSpace: 'normal', 
+                                    maxWidth: 600, 
+                                    lineHeight: 1.1 
+                                }}>{b.label}</p>
                                 <p className="v2-bar-count--simple">{b.count}</p>
                             </div>
                             <div className="v2-bar-track--simple">
