@@ -92,6 +92,7 @@ export function SlideV2Feb_10b() {
                     </div>
                 ))}
             </div>
+            <p className="v2-footnote">Novelties excluding $0 – $500 price range.</p>
         </div>
     )
 }

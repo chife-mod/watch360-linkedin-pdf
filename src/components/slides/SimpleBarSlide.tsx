@@ -11,9 +11,10 @@ interface Props {
     rows: SimpleRow[]
     subtitleTop?: number
     noUppercaseLabels?: boolean
+    footnote?: string
 }
 
-export function SimpleBarSlide({ title, subtitle, rows, subtitleTop, noUppercaseLabels }: Props) {
+export function SimpleBarSlide({ title, subtitle, rows, subtitleTop, noUppercaseLabels, footnote }: Props) {
     const max = Math.max(...rows.map(r => r.count))
     const defaultSubTop = 213 + 100 * 0.93 + 11  // ≈ 317
 
@@ -76,6 +77,7 @@ export function SimpleBarSlide({ title, subtitle, rows, subtitleTop, noUppercase
                     </div>
                 ))}
             </div>
+            {footnote && <p className="v2-footnote">{footnote}</p>}
         </div>
     )
 }

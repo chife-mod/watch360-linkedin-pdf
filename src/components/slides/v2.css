@@ -259,3 +259,19 @@
     border-radius: 500px;
     overflow: hidden;
 }
+
+/* ── Shared footnote / note — used on all slides that have a NOTE ── */
+/* Figma: x=100, y=1250, 32px Lato Regular, #7B7B7A, uppercase */
+.v2-footnote {
+    position: absolute;
+    top: 1250px;
+    left: 100px;
+    width: 880px;
+    font-family: 'Lato', sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 0.93;
+    text-transform: uppercase;
+    color: #7B7B7A;
+    margin: 0;
+}

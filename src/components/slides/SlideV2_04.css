@@ -34,17 +34,4 @@
     margin: 0;
 }
 
-/* Footnote — Figma: x=179, y=1250, 32px, #7B7B7A */
-.s04-footnote {
-    position: absolute;
-    top: 1250px;
-    left: 100px;
-    width: 880px;
-    font-family: 'Lato', sans-serif;
-    font-size: 32px;
-    font-weight: 400;
-    line-height: 0.93;
-    text-transform: uppercase;
-    color: #7B7B7A;
-    margin: 0;
-}
+/* Footnote → now using shared .v2-footnote from v2.css */

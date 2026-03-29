@@ -60,7 +60,7 @@ export function SlideV2Feb_04() {
                 ))}
             </div>
 
-            <p className="s04-footnote">
+            <p className="v2-footnote">
                 Novelties excluding $0 – $500 price range.
             </p>
         </div>

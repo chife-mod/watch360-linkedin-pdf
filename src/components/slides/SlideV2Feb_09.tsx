@@ -7,6 +7,7 @@ export function SlideV2Feb_09() {
             title='PRICE RANGES'
             subtitle='FEB 2026 NOVELTIES'
             noUppercaseLabels
+            footnote='Novelties excluding $0 – $500 price range.'
             rows={[
                 { label: '$0–$500',             count: 48 },
                 { label: '$2,500–$5,000',        count: 35 },
