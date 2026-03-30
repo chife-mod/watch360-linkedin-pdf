@@ -8,17 +8,19 @@ import LOGO_RW      from '/assets/logos/raymond_weil.svg'
 import LOGO_CASIO   from '/assets/logos/casio.svg'
 
 // Watch photos from MinIO (ct_product_line_*)
-import PHOTO_CARTIER  from '/assets/watches/col_cartier_baignoire.png'
-import PHOTO_CASIO    from '/assets/watches/col_casio_edifice.png'
+import PHOTO_RW_MILLESIME   from '/assets/watches/col_raymond_weil_millesime.png'
+import PHOTO_AP_RO_OFFSHORE from '/assets/watches/col_ap_royal_oak_offshore.png'
+import PHOTO_CARTIER        from '/assets/watches/col_cartier_baignoire.png'
+import PHOTO_CASIO          from '/assets/watches/col_casio_edifice.png'
 
 interface Line { label: string; count: number; logo: string | null; photo: string | null }
 
 const LINES: Line[] = [
-    { label: 'Raymond Weil MILLESIME',        count: 7, logo: LOGO_RW,    photo: null             },
-    { label: 'Audemars Piguet Royal Oak Offshore', count: 5, logo: LOGO_AP, photo: null            },
-    { label: 'Audemars Piguet Code 11.59',    count: 4, logo: LOGO_AP,    photo: null              },
-    { label: 'Cartier Baignoire',             count: 4, logo: null,        photo: PHOTO_CARTIER    },
-    { label: 'Casio EDIFICE',                 count: 4, logo: LOGO_CASIO,  photo: PHOTO_CASIO      },
+    { label: 'Raymond Weil MILLESIME',            count: 7, logo: LOGO_RW,    photo: PHOTO_RW_MILLESIME   },
+    { label: 'Audemars Piguet Royal Oak Offshore', count: 5, logo: LOGO_AP,   photo: PHOTO_AP_RO_OFFSHORE },
+    { label: 'Audemars Piguet Code 11.59',        count: 4, logo: LOGO_AP,    photo: PHOTO_AP_RO_OFFSHORE },
+    { label: 'Cartier Baignoire',                 count: 4, logo: null,        photo: PHOTO_CARTIER        },
+    { label: 'Casio EDIFICE',                     count: 4, logo: LOGO_CASIO,  photo: PHOTO_CASIO          },
 ]
 
 const MAX = 11  // same scale as slide 1-5

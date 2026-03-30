@@ -4,22 +4,22 @@ import LOGO_SYMBOL from '/assets/logos/watch360-symbol.svg'
 import LOGO_WORDMARK from '/assets/logos/watch360-wordmark.svg'
 
 // Real brand logos downloaded from MinIO (objects-logos/ct_brand_*)
-import LOGO_AP      from '/assets/logos/audemars_piguet.svg'
-import LOGO_D1      from '/assets/logos/d1_milano.png'
-import LOGO_CASIO   from '/assets/logos/casio.svg'
-import LOGO_SEIKO   from '/assets/logos/seiko.svg'
-import LOGO_NIVADA  from '/assets/logos/nivada_grenchen.svg'
+import LOGO_AP       from '/assets/logos/audemars_piguet.svg'
+import LOGO_SEIKO    from '/assets/logos/seiko.svg'
 import LOGO_HAMILTON from '/assets/logos/hamilton.svg'
-import LOGO_RW      from '/assets/logos/raymond_weil.svg'
+import LOGO_NIVADA   from '/assets/logos/nivada_grenchen.svg'
+import LOGO_RW       from '/assets/logos/raymond_weil.svg'
+import LOGO_CASIO    from '/assets/logos/casio.svg'
 
-const BRANDS = [
-    { name: 'Audemars Piguet', count: 21, logo: LOGO_AP },
-    { name: 'D1 Milano',       count: 19, logo: LOGO_D1 },
-    { name: 'Casio',           count: 12, logo: LOGO_CASIO },
-    { name: 'Seiko',           count: 11, logo: LOGO_SEIKO },
-    { name: 'Nivada Grenchen', count: 9,  logo: LOGO_NIVADA },
+
+const BRANDS: { name: string; count: number; logo: string | null }[] = [
+    { name: 'Audemars Piguet', count: 21, logo: LOGO_AP      },
+    { name: 'Seiko',           count: 10, logo: LOGO_SEIKO   },
     { name: 'Hamilton',        count: 9,  logo: LOGO_HAMILTON },
-    { name: 'Raymond Weil',    count: 9,  logo: LOGO_RW },
+    { name: 'Nivada Grenchen', count: 9,  logo: LOGO_NIVADA  },
+    { name: 'Raymond Weil',    count: 9,  logo: LOGO_RW      },
+    { name: 'Casio',           count: 8,  logo: LOGO_CASIO   },
+    { name: 'Delbana',         count: 8,  logo: null         },
 ]
 
 const MAX = 21
@@ -45,7 +45,9 @@ export function SlideV2Feb_04() {
                 {BRANDS.map((b) => (
                     <div key={b.name} className="v2-bar-row">
                         <div className="v2-logo-box">
-                            <img src={b.logo} alt={b.name} />
+                            {b.logo
+                                ? <img src={b.logo} alt={b.name} />
+                                : <span style={{ fontFamily: "'Lato', sans-serif", fontSize: 16, fontWeight: 700, color: '#3A3935', textAlign: 'center', lineHeight: 1.2, padding: '0 4px' }}>{b.name}</span>}
                         </div>
                         <div className="v2-bar-content">
                             <div className="v2-bar-label-row">

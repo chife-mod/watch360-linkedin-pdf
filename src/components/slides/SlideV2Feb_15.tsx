@@ -3,23 +3,26 @@ import LOGO_SYMBOL   from '/assets/logos/watch360-symbol.svg'
 import LOGO_WORDMARK from '/assets/logos/watch360-wordmark.svg'
 
 // Brand logos
-import LOGO_AP     from '/assets/logos/audemars_piguet.svg'
-import LOGO_NIVADA from '/assets/logos/nivada_grenchen.svg'
+import LOGO_AP       from '/assets/logos/audemars_piguet.svg'
+import LOGO_NIVADA   from '/assets/logos/nivada_grenchen.svg'
 import LOGO_HAMILTON from '/assets/logos/hamilton.svg'
-import LOGO_HUBLOT from '/assets/logos/hublot.svg'
+import LOGO_HUBLOT   from '/assets/logos/hublot.svg'
 
 // Watch photos from MinIO (ct_product_line_*)
-import PHOTO_AP_ROYAL_OAK  from '/assets/watches/col_ap_royal_oak.png'
-import PHOTO_HUBLOT_BB     from '/assets/watches/col_hublot_big_bang.png'
+import PHOTO_AP_ROYAL_OAK      from '/assets/watches/col_ap_royal_oak.png'
+import PHOTO_NIVADA_F77        from '/assets/watches/col_nivada_f77_mkii.png'
+import PHOTO_DELBANA_ROTONDA   from '/assets/watches/col_delbana_rotonda.png'
+import PHOTO_HAMILTON_JAZZ     from '/assets/watches/col_hamilton_jazzmaster.png'
+import PHOTO_HUBLOT_BB         from '/assets/watches/col_hublot_big_bang.png'
 
 interface Line { label: string; count: number; logo: string | null; photo: string | null }
 
 const LINES: Line[] = [
-    { label: 'Audemars Piguet Royal Oak', count: 11, logo: LOGO_AP,      photo: PHOTO_AP_ROYAL_OAK },
-    { label: 'Nivada F77 MKII',           count: 9,  logo: LOGO_NIVADA,   photo: null               },
-    { label: 'Delbana Rotonda',           count: 8,  logo: null,           photo: null               },
-    { label: 'Hamilton Jazzmaster',       count: 7,  logo: LOGO_HAMILTON,  photo: null               },
-    { label: 'Hublot Big Bang',           count: 7,  logo: LOGO_HUBLOT,    photo: PHOTO_HUBLOT_BB    },
+    { label: 'Audemars Piguet Royal Oak', count: 11, logo: LOGO_AP,       photo: PHOTO_AP_ROYAL_OAK    },
+    { label: 'Nivada F77 MKII',           count: 9,  logo: LOGO_NIVADA,   photo: PHOTO_NIVADA_F77      },
+    { label: 'Delbana Rotonda',           count: 8,  logo: null,           photo: PHOTO_DELBANA_ROTONDA },
+    { label: 'Hamilton Jazzmaster',       count: 7,  logo: LOGO_HAMILTON,  photo: PHOTO_HAMILTON_JAZZ   },
+    { label: 'Hublot Big Bang',           count: 7,  logo: LOGO_HUBLOT,    photo: PHOTO_HUBLOT_BB       },
 ]
 
 const MAX = 11

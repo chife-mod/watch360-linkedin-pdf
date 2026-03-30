@@ -98,6 +98,20 @@ function App() {
         if (deck) deck.scrollLeft = 0
     }, [reportId])
 
+    // Vertical wheel → horizontal scroll (restores natural trackpad/mouse wheel behavior)
+    useEffect(() => {
+        const deck = deckRef.current
+        if (!deck) return
+        const onWheel = (e: WheelEvent) => {
+            // Only hijack pure vertical wheel (not pinch-to-zoom, not horizontal swipe)
+            if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return
+            e.preventDefault()
+            deck.scrollLeft += e.deltaY
+        }
+        deck.addEventListener('wheel', onWheel, { passive: false })
+        return () => deck.removeEventListener('wheel', onWheel)
+    }, [])
+
     // Auto-scale on resize
     useEffect(() => {
         const onResize = () => { if (!userAdjRef.current) setScale(computeAutoScale()) }
