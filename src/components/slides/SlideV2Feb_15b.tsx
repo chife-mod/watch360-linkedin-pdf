@@ -2,28 +2,26 @@ import './v2.css'
 import LOGO_SYMBOL   from '/assets/logos/watch360-symbol.svg'
 import LOGO_WORDMARK from '/assets/logos/watch360-wordmark.svg'
 
-// Brand logos
-import LOGO_AP      from '/assets/logos/audemars_piguet.svg'
-import LOGO_RW      from '/assets/logos/raymond_weil.svg'
-import LOGO_CASIO   from '/assets/logos/casio.svg'
+import LOGO_HAMILTON from '/assets/logos/hamilton.svg'
+import LOGO_AP       from '/assets/logos/audemars_piguet.svg'
 
-// Watch photos from MinIO (ct_product_line_*)
-import PHOTO_RW_MILLESIME   from '/assets/watches/col_raymond_weil_millesime.png'
+// Watch photos
+import PHOTO_HAMILTON_JAZZ  from '/assets/watches/col_hamilton_jazzmaster.png'
 import PHOTO_AP_RO_OFFSHORE from '/assets/watches/col_ap_royal_oak_offshore.png'
 import PHOTO_CARTIER        from '/assets/watches/col_cartier_baignoire.png'
-import PHOTO_CASIO          from '/assets/watches/col_casio_edifice.png'
 
 interface Line { label: string; count: number; logo: string | null; photo: string | null }
 
+/* Feb 2026 Collections [6–10] — per sheet order, excl $0–$500 and N/A */
 const LINES: Line[] = [
-    { label: 'Raymond Weil MILLESIME',            count: 7, logo: LOGO_RW,    photo: PHOTO_RW_MILLESIME   },
+    { label: 'Hamilton Jazzmaster',             count: 7, logo: LOGO_HAMILTON, photo: PHOTO_HAMILTON_JAZZ  },
     { label: 'Audemars Piguet Royal Oak Offshore', count: 5, logo: LOGO_AP,   photo: PHOTO_AP_RO_OFFSHORE },
-    { label: 'Audemars Piguet Code 11.59',        count: 4, logo: LOGO_AP,    photo: PHOTO_AP_RO_OFFSHORE },
-    { label: 'Cartier Baignoire',                 count: 4, logo: null,        photo: PHOTO_CARTIER        },
-    { label: 'Casio EDIFICE',                     count: 4, logo: LOGO_CASIO,  photo: PHOTO_CASIO          },
+    { label: 'Junghans Sport',                  count: 4, logo: null,          photo: null                 },
+    { label: 'Longines DolceVita',              count: 4, logo: null,          photo: null                 },
+    { label: 'Cartier Baignoire',               count: 4, logo: null,          photo: PHOTO_CARTIER        },
 ]
 
-const MAX = 11  // same scale as slide 1-5
+const MAX = 9  // same scale as slide 1-5
 const SQ  = 136
 const R   = 6
 
@@ -120,7 +118,7 @@ export function SlideV2Feb_15b() {
                 ))}
             </div>
 
-            <p className="v2-footnote">Novelties excluding $0 – $500 price range.</p>
+            <p className="v2-footnote">Novelties excluding $0 – $500 and N/A price ranges.</p>
         </div>
     )
 }

@@ -1,24 +1,22 @@
 import './v2.css'
-import LOGO_SYMBOL from '/assets/logos/watch360-symbol.svg'
-import LOGO_WORDMARK from '/assets/logos/watch360-wordmark.svg'
+import LOGO_SYMBOL    from '/assets/logos/watch360-symbol.svg'
+import LOGO_WORDMARK  from '/assets/logos/watch360-wordmark.svg'
 
-import LOGO_AP       from '/assets/logos/audemars_piguet.svg'
-import LOGO_SEIKO    from '/assets/logos/seiko.svg'
+import LOGO_AP        from '/assets/logos/audemars_piguet.svg'
 import LOGO_BREITLING from '/assets/logos/breitling.svg'
 
-import IMG_AP_A010      from '/assets/watches/ap_a010.png'
-import IMG_AP_A355      from '/assets/watches/ap_a355.png'
-import IMG_SRPM09       from '/assets/watches/srpm09.png'
+import IMG_AP_A355        from '/assets/watches/ap_a355.png'
 import IMG_BREITLING_EB01 from '/assets/watches/breitling_eb01.png'
-import IMG_AP_A403      from '/assets/watches/ap_a403.png'
+import IMG_AP_A403        from '/assets/watches/ap_a403.png'
+import IMG_AP_A010        from '/assets/watches/ap_a010.png'
 
-/* Feb 2026 — Refs in Media [6–10] */
+/* Feb 2026 — Refs in Media [6–9]
+   PAM01730 = SKIP per sheet → items shift; Seiko SRPM09 not in sheet */
 const MODELS = [
-    { logo: LOGO_AP,        name: 'Audemars Piguet Royal Oak Offshore',             ref: '15720ST.OO.A010CA.01',  img: IMG_AP_A010        },
-    { logo: LOGO_AP,        name: 'Audemars Piguet Royal Oak Offshore',             ref: '15720ST.OO.A355CA.01',  img: IMG_AP_A355        },
-    { logo: LOGO_SEIKO,     name: 'Seiko 5 Sports SRPM09',                          ref: 'SRPM09',                img: IMG_SRPM09         },
-    { logo: LOGO_BREITLING, name: 'Breitling Navitimer B01 Chrono 43 Aston Martin', ref: 'EB01381A1B1X1',         img: IMG_BREITLING_EB01 },
-    { logo: LOGO_AP,        name: 'Audemars Piguet Royal Oak Offshore',             ref: '15720ST.OO.A403CA.01',  img: IMG_AP_A403        },
+    { logo: LOGO_AP,        name: 'Audemars Piguet Royal Oak Offshore',             ref: '15720ST.OO.A355CA.01', img: IMG_AP_A355        },
+    { logo: LOGO_BREITLING, name: 'Breitling Navitimer B01 Chrono 43 Aston Martin', ref: 'EB01381A1B1X1',        img: IMG_BREITLING_EB01 },
+    { logo: LOGO_AP,        name: 'Audemars Piguet Royal Oak Offshore',             ref: '15720ST.OO.A403CA.01', img: IMG_AP_A403        },
+    { logo: LOGO_AP,        name: 'Audemars Piguet Royal Oak',                      ref: '15553BA.OO.1356BA.04', img: IMG_AP_A010        },
 ]
 
 const SQ = 136
@@ -39,7 +37,7 @@ export function SlideV2Feb_10b() {
             </div>
 
             <p className="v2-title">REFS IN MEDIA</p>
-            <p className="v2-subtitle" style={{ top: 317 }}>FEB 2026 WATCH MEDIA [6–10]</p>
+            <p className="v2-subtitle" style={{ top: 317 }}>FEB 2026 WATCH MEDIA [6–9]</p>
 
             <div style={{
                 position: 'absolute',
@@ -92,7 +90,7 @@ export function SlideV2Feb_10b() {
                     </div>
                 ))}
             </div>
-            <p className="v2-footnote">Novelties excluding $0 – $500 price range.</p>
+            <p className="v2-footnote">Watch Media mentions Feb 2026 – Mar 2026.</p>
         </div>
     )
 }

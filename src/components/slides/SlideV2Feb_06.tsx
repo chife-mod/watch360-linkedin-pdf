@@ -8,7 +8,7 @@ export function SlideV2Feb_06() {
             subtitle='FEB 2026 NOVELTIES'
             rows={[
                 { label: 'Stainless Steel',         count: 83 },
-                { label: 'Rubber',                  count: 29 },
+                { label: 'Rubber',                  count: 28 },
                 { label: 'Leather',                 count: 24 },
                 { label: 'Alligator',               count: 14 },
                 { label: 'Calfskin',                count: 14 },
