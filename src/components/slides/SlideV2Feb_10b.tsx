@@ -5,14 +5,14 @@ import LOGO_WORDMARK  from '/assets/logos/watch360-wordmark.svg'
 import LOGO_AP        from '/assets/logos/audemars_piguet.svg'
 import LOGO_BREITLING from '/assets/logos/breitling.svg'
 
+import IMG_AP_A010        from '/assets/watches/ap_a010.png'
 import IMG_AP_A355        from '/assets/watches/ap_a355.png'
 import IMG_BREITLING_EB01 from '/assets/watches/breitling_eb01.png'
 import IMG_AP_A403        from '/assets/watches/ap_a403.png'
-import IMG_AP_A010        from '/assets/watches/ap_a010.png'
 
-/* Feb 2026 — Refs in Media [6–9]
-   PAM01730 = SKIP per sheet → items shift; Seiko SRPM09 not in sheet */
+/* Feb 2026 — Refs in Media [6–10] (items 6-10 per sheet column order) */
 const MODELS = [
+    { logo: LOGO_AP,        name: 'Audemars Piguet Royal Oak Offshore',             ref: '15720ST.OO.A010CA.01', img: IMG_AP_A010        },
     { logo: LOGO_AP,        name: 'Audemars Piguet Royal Oak Offshore',             ref: '15720ST.OO.A355CA.01', img: IMG_AP_A355        },
     { logo: LOGO_BREITLING, name: 'Breitling Navitimer B01 Chrono 43 Aston Martin', ref: 'EB01381A1B1X1',        img: IMG_BREITLING_EB01 },
     { logo: LOGO_AP,        name: 'Audemars Piguet Royal Oak Offshore',             ref: '15720ST.OO.A403CA.01', img: IMG_AP_A403        },
@@ -37,7 +37,7 @@ export function SlideV2Feb_10b() {
             </div>
 
             <p className="v2-title">REFS IN MEDIA</p>
-            <p className="v2-subtitle" style={{ top: 317 }}>FEB 2026 WATCH MEDIA [6–9]</p>
+            <p className="v2-subtitle" style={{ top: 317 }}>FEB 2026 WATCH MEDIA [6–10]</p>
 
             <div style={{
                 position: 'absolute',

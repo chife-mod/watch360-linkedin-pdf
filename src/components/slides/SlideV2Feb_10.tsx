@@ -4,21 +4,20 @@ import LOGO_WORDMARK from '/assets/logos/watch360-wordmark.svg'
 
 import LOGO_PANERAI   from '/assets/logos/panerai.svg'
 import LOGO_IWC       from '/assets/logos/iwc.svg'
-import LOGO_AP        from '/assets/logos/audemars_piguet.svg'
 
 import IMG_PAM01729   from '/assets/watches/pam01729.png'
+import IMG_PAM01730   from '/assets/watches/pam01730.png'
 import IMG_IW371631   from '/assets/watches/iw371631.png'
 import IMG_IW328107   from '/assets/watches/iw328107.png'
 import IMG_IW389411   from '/assets/watches/iw389411.png'
-import IMG_AP_A010    from '/assets/watches/ap_a010.png'
 
-/* Feb 2026 — Refs in Media [1–5] (PAM01730 is SKIP per sheet) */
+/* Feb 2026 — Refs in Media [1–5] (PAM01730 is NOT skip in REFs col) */
 const MODELS = [
-    { logo: LOGO_PANERAI, name: 'Panerai Radiomir California Bronzo',              ref: 'PAM01729',              img: IMG_PAM01729 },
-    { logo: LOGO_IWC,     name: 'IWC Portugieser Chronograph Ceratanium®',         ref: 'IW371631',              img: IMG_IW371631 },
-    { logo: LOGO_IWC,     name: "IWC Pilot's Watch Automatic 41 George Russell",   ref: 'IW328107',              img: IMG_IW328107 },
-    { logo: LOGO_IWC,     name: "IWC Pilot's Watch Chronograph 41 George Russell", ref: 'IW389411',              img: IMG_IW389411 },
-    { logo: LOGO_AP,      name: 'Audemars Piguet Royal Oak Offshore',              ref: '15720ST.OO.A010CA.01',  img: IMG_AP_A010  },
+    { logo: LOGO_PANERAI, name: 'Panerai Radiomir California Bronzo',              ref: 'PAM01729', img: IMG_PAM01729 },
+    { logo: LOGO_PANERAI, name: 'Panerai Radiomir Platinumtech™',                  ref: 'PAM01730', img: IMG_PAM01730 },
+    { logo: LOGO_IWC,     name: 'IWC Portugieser Chronograph Ceratanium®',         ref: 'IW371631', img: IMG_IW371631 },
+    { logo: LOGO_IWC,     name: "IWC Pilot's Watch Automatic 41 George Russell",   ref: 'IW328107', img: IMG_IW328107 },
+    { logo: LOGO_IWC,     name: "IWC Pilot's Watch Chronograph 41 George Russell", ref: 'IW389411', img: IMG_IW389411 },
 ]
 
 const SQ = 136
