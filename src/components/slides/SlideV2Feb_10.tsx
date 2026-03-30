@@ -78,13 +78,13 @@ export function SlideV2Feb_10() {
                             </div>
                         </div>
 
-                        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 16 }}>
-                            <p style={{
-                                fontFamily: "'Lato', sans-serif", fontSize: 32, fontWeight: 400,
-                                color: '#FFFFFF', margin: 0, lineHeight: 1, textTransform: 'uppercase',
-                            }}>{m.name}</p>
+                        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 12 }}>
                             <p style={{
                                 fontFamily: "'Lato', sans-serif", fontSize: 24, fontWeight: 400,
+                                color: '#FFFFFF', margin: 0, lineHeight: 1.4,
+                            }}>{m.name}</p>
+                            <p style={{
+                                fontFamily: "'Lato', sans-serif", fontSize: 20, fontWeight: 400,
                                 color: 'rgba(255,255,255,0.5)', margin: 0, lineHeight: 1.2,
                             }}>{m.ref}</p>
                         </div>
