@@ -37,7 +37,7 @@ export function SlideV2Feb_10b() {
             </div>
 
             <p className="v2-title">REFS IN MEDIA</p>
-            <p className="v2-subtitle" style={{ top: 317 }}>FEB 2026 WATCH MEDIA [6–10]</p>
+            <p className="v2-subtitle" style={{ top: 317 }}>FEB 2026 NOVELTIES [6–10]</p>
 
             <div style={{
                 position: 'absolute',
