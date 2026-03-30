@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
 import html2canvas from 'html2canvas'
 import { jsPDF } from 'jspdf'
 import './styles/global.css'
@@ -42,18 +41,18 @@ const REPORTS = [
         slides: [
             <SlideV2Feb_01 />,  // 01 Cover
             <SlideV2Feb_04 />,  // 02 Top 7 Brands
-            <SlideV2Feb_05 />,  // 03 Case Material
-            <SlideV2Feb_06 />,  // 04 Strap Material
-            <SlideV2Feb_07 />,  // 05 Dial Colors
-            <SlideV2Feb_08 />,  // 06 Special Editions
+            <SlideV2Feb_15 />,  // 03 Collections [1–5]
+            <SlideV2Feb_15b />, // 04 Collections [6–10]
+            <SlideV2Feb_10 />,  // 05 REFs in Media [1–5]
+            <SlideV2Feb_10b />, // 06 REFs in Media [6–10]
             <SlideV2Feb_09 />,  // 07 Price Ranges
-            <SlideV2Feb_10 />,  // 08 Discussed Novelties [1–5]
-            <SlideV2Feb_10b />, // 09 Discussed Novelties [6–10]
-            <SlideV2Feb_11 />,  // 09 Case Diameter
-            <SlideV2Feb_12 />,  // 10 Case Height
-            <SlideV2Feb_14 />,  // 12 Watch Functions
-            <SlideV2Feb_15 />,  // 13 Product Lines [1-5]
-            <SlideV2Feb_15b />, // 14 Product Lines [6-10]
+            <SlideV2Feb_08 />,  // 08 Special Editions
+            <SlideV2Feb_07 />,  // 09 Dial Colors
+            <SlideV2Feb_05 />,  // 10 Case Material
+            <SlideV2Feb_06 />,  // 11 Strap Material
+            <SlideV2Feb_11 />,  // 12 Case Diameter
+            <SlideV2Feb_12 />,  // 13 Case Height
+            <SlideV2Feb_14 />,  // 14 Functions
         ],
     },
     {
@@ -80,7 +79,6 @@ const computeAutoScale = () =>
     ) * 0.97
 
 function App() {
-    const navigate = useNavigate()
     const [scale, setScale] = useState(computeAutoScale)
     const [isExporting, setIsExporting] = useState(false)
     const [reportId, setReportId] = useState('feb-2026')
@@ -224,8 +222,8 @@ function App() {
                     {isExporting ? 'Saving…' : 'Save PDF'}
                 </button>
 
-                {/* Make Video */}
-                <button className="anim-btn" onClick={() => navigate('/animation')}>
+                {/* Make Video → opens Remotion Studio */}
+                <button className="anim-btn" onClick={() => window.open('http://localhost:7100/FebFullVideo', '_blank')}>
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style={{ marginRight: 6 }}>
                         <path d="M2 1L11 6L2 11V1Z" fill="currentColor" />
                     </svg>

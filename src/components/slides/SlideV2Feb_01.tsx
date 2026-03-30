@@ -31,7 +31,7 @@ export function SlideV2Feb_01() {
             {/* Stat cards */}
             <div className="slide01__stats">
                 <div className="slide01__card slide01__card--shadow">
-                    <p className="slide01__num">215</p>
+                    <p className="slide01__num">214</p>
                     <p className="slide01__lbl">New Models</p>
                 </div>
                 <div className="slide01__card">

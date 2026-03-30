@@ -1,6 +1,6 @@
 import { SimpleBarSlide } from './SimpleBarSlide'
 
-/* Feb 2026 Case Diameter — top 10 */
+/* Feb 2026 Case Diameter — alphabetically sorted, top 10 */
 export function SlideV2Feb_11() {
     return (
         <SimpleBarSlide
@@ -8,16 +8,16 @@ export function SlideV2Feb_11() {
             subtitle='FEB 2026 NOVELTIES'
             noUppercaseLabels
             rows={[
-                { label: '40 mm', count: 40 },
-                { label: '39 mm', count: 30 },
-                { label: '38 mm', count: 26 },
-                { label: '42 mm', count: 22 },
-                { label: '41 mm', count: 14 },
-                { label: '43 mm', count: 14 },
-                { label: '36 mm', count: 8 },
-                { label: '47 mm', count: 7 },
-                { label: '45 mm', count: 6 },
+                { label: '18 mm', count: 2 },
+                { label: '19 mm', count: 2 },
+                { label: '20 mm', count: 2 },
+                { label: '21 mm', count: 1 },
+                { label: '23 mm', count: 4 },
                 { label: '24 mm', count: 6 },
+                { label: '25 mm', count: 1 },
+                { label: '30 mm', count: 2 },
+                { label: '32 mm', count: 5 },
+                { label: '33 mm', count: 2 },
             ]}
         />
     )
