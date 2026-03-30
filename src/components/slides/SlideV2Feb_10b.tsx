@@ -91,7 +91,10 @@ export function SlideV2Feb_10b() {
                     </div>
                 ))}
             </div>
-            <p className="v2-footnote">Novelties excluding $0 – $500 and N/A price ranges. Watch Media mentions Feb 2026 – Mar 2026.</p>
+            <p className="v2-footnote">
+                Novelties excluding $0 – $500 and N/A price ranges.<br />
+                Watch Media mentions Feb 2026 – Mar 2026.
+            </p>
         </div>
     )
 }
