@@ -4,7 +4,7 @@ import { SimpleBarSlide } from './SimpleBarSlide'
 export function SlideV2Feb_14() {
     return (
         <SimpleBarSlide
-            title='FUNCTIONS'
+            title='FUNCTION'
             subtitle='FEB 2026 NOVELTIES'
             rows={[
                 { label: 'Date',               count: 93 },

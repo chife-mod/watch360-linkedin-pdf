@@ -38,8 +38,8 @@ export function SlideV2Feb_04() {
                 <p className="v2-header__url">www.watch360.ai</p>
             </div>
 
-            <p className="v2-title">NOVELTIES</p>
-            <p className="v2-subtitle" style={{ top: 317 }}>FEB 2026 [TOP 7 BRANDS]</p>
+            <p className="v2-title">BRANDS</p>
+            <p className="v2-subtitle" style={{ top: 317 }}>FEB 2026 NOVELTIES</p>
 
             <div className="v2-bars">
                 {BRANDS.map((b) => (

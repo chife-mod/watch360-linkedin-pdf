@@ -4,7 +4,7 @@ import { SimpleBarSlide } from './SimpleBarSlide'
 export function SlideV2Feb_07() {
     return (
         <SimpleBarSlide
-            title='DIAL COLORS'
+            title='DIAL COLOR'
             subtitle='FEB 2026 NOVELTIES'
             rows={[
                 { label: 'Black',    count: 50, color: '#1C1C1C' },  // rich charcoal-black
