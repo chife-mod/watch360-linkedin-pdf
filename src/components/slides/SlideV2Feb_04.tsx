@@ -4,25 +4,25 @@ import LOGO_SYMBOL from '/assets/logos/watch360-symbol.svg'
 import LOGO_WORDMARK from '/assets/logos/watch360-wordmark.svg'
 
 // Real brand logos downloaded from MinIO (objects-logos/ct_brand_*)
-import LOGO_AP       from '/assets/logos/audemars_piguet.svg'
-import LOGO_SEIKO    from '/assets/logos/seiko.svg'
-import LOGO_HAMILTON from '/assets/logos/hamilton.svg'
-import LOGO_NIVADA   from '/assets/logos/nivada_grenchen.svg'
-import LOGO_RW       from '/assets/logos/raymond_weil.svg'
-import LOGO_CASIO    from '/assets/logos/casio.svg'
+import LOGO_AP        from '/assets/logos/audemars_piguet.svg'
+import LOGO_HAMILTON  from '/assets/logos/hamilton.svg'
+import LOGO_NIVADA    from '/assets/logos/nivada_grenchen.svg'
+import LOGO_RW        from '/assets/logos/raymond_weil.svg'
+import LOGO_BREITLING from '/assets/logos/breitling.svg'
+import LOGO_HUBLOT    from '/assets/logos/hublot.svg'
 
 
 const BRANDS: { name: string; count: number; logo: string | null }[] = [
-    { name: 'Audemars Piguet', count: 21, logo: LOGO_AP      },
-    { name: 'Seiko',           count: 10, logo: LOGO_SEIKO   },
-    { name: 'Hamilton',        count: 9,  logo: LOGO_HAMILTON },
+    { name: 'Audemars Piguet', count: 16, logo: LOGO_AP      },
     { name: 'Nivada Grenchen', count: 9,  logo: LOGO_NIVADA  },
+    { name: 'Hamilton',        count: 9,  logo: LOGO_HAMILTON },
     { name: 'Raymond Weil',    count: 9,  logo: LOGO_RW      },
-    { name: 'Casio',           count: 8,  logo: LOGO_CASIO   },
     { name: 'Delbana',         count: 8,  logo: null         },
+    { name: 'Breitling',       count: 7,  logo: LOGO_BREITLING },
+    { name: 'Hublot',          count: 7,  logo: LOGO_HUBLOT  },
 ]
 
-const MAX = 21
+const MAX = 16
 
 export function SlideV2Feb_04() {
     return (

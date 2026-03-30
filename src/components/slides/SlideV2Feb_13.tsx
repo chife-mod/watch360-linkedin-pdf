@@ -10,7 +10,7 @@ export function SlideV2Feb_13() {
                 { label: 'Automatic',    count: 141 },
                 { label: 'Quartz',       count: 51 },
                 { label: 'Manual',       count: 13 },
-                { label: 'Solar Quartz', count: 9 },
+                { label: 'Solar Quartz', count: 8 },
                 { label: 'Smart',        count: 1 },
             ]}
         />

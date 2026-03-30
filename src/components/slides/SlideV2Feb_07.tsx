@@ -7,7 +7,7 @@ export function SlideV2Feb_07() {
             title='DIAL COLORS'
             subtitle='FEB 2026 NOVELTIES'
             rows={[
-                { label: 'Black',    count: 51, color: '#1C1C1C' },  // rich charcoal-black
+                { label: 'Black',    count: 50, color: '#1C1C1C' },  // rich charcoal-black
                 { label: 'Blue',     count: 35, color: '#1B3A5C' },  // deep ocean navy
                 { label: 'White',    count: 20, color: '#F0EDE8' },  // warm ivory
                 { label: 'Grey',     count: 19, color: '#7A7C7E' },  // brushed steel
