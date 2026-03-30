@@ -9,6 +9,7 @@ import IMG_AP_A010        from '/assets/watches/ap_a010.png'
 import IMG_AP_A355        from '/assets/watches/ap_a355.png'
 import IMG_BREITLING_EB01 from '/assets/watches/breitling_eb01.png'
 import IMG_AP_A403        from '/assets/watches/ap_a403.png'
+import IMG_AP_GOLD        from '/assets/watches/col_ap_royal_oak_gold.png'
 
 /* Feb 2026 — Refs in Media [6–10] (items 6-10 per sheet column order) */
 const MODELS = [
@@ -16,7 +17,7 @@ const MODELS = [
     { logo: LOGO_AP,        name: 'Audemars Piguet Royal Oak Offshore',             ref: '15720ST.OO.A355CA.01', img: IMG_AP_A355        },
     { logo: LOGO_BREITLING, name: 'Breitling Navitimer B01 Chrono 43 Aston Martin', ref: 'EB01381A1B1X1',        img: IMG_BREITLING_EB01 },
     { logo: LOGO_AP,        name: 'Audemars Piguet Royal Oak Offshore',             ref: '15720ST.OO.A403CA.01', img: IMG_AP_A403        },
-    { logo: LOGO_AP,        name: 'Audemars Piguet Royal Oak',                      ref: '15553BA.OO.1356BA.04', img: IMG_AP_A010        },
+    { logo: LOGO_AP,        name: 'Audemars Piguet Royal Oak',                      ref: '15553BA.OO.1356BA.04', img: IMG_AP_GOLD        },
 ]
 
 const SQ = 136

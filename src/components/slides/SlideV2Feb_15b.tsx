@@ -4,21 +4,26 @@ import LOGO_WORDMARK from '/assets/logos/watch360-wordmark.svg'
 
 import LOGO_HAMILTON from '/assets/logos/hamilton.svg'
 import LOGO_AP       from '/assets/logos/audemars_piguet.svg'
+import LOGO_JUNGHANS from '/assets/logos/junghans.svg'
+import LOGO_LONGINES from '/assets/logos/longines.svg'
+import LOGO_CARTIER  from '/assets/logos/cartier.svg'
 
 // Watch photos
 import PHOTO_HAMILTON_JAZZ  from '/assets/watches/col_hamilton_jazzmaster.png'
 import PHOTO_AP_RO_OFFSHORE from '/assets/watches/col_ap_royal_oak_offshore.png'
+import PHOTO_JUNGHANS_SPORT from '/assets/watches/col_junghans_sport.png'
+import PHOTO_LONGINES_DOLCE from '/assets/watches/col_longines_dolcevita.png'
 import PHOTO_CARTIER        from '/assets/watches/col_cartier_baignoire.png'
 
 interface Line { label: string; count: number; logo: string | null; photo: string | null }
 
 /* Feb 2026 Collections [6–10] — per sheet order, excl $0–$500 and N/A */
 const LINES: Line[] = [
-    { label: 'Hamilton Jazzmaster',             count: 7, logo: LOGO_HAMILTON, photo: PHOTO_HAMILTON_JAZZ  },
-    { label: 'Audemars Piguet Royal Oak Offshore', count: 5, logo: LOGO_AP,   photo: PHOTO_AP_RO_OFFSHORE },
-    { label: 'Junghans Sport',                  count: 4, logo: null,          photo: null                 },
-    { label: 'Longines DolceVita',              count: 4, logo: null,          photo: null                 },
-    { label: 'Cartier Baignoire',               count: 4, logo: null,          photo: PHOTO_CARTIER        },
+    { label: 'Hamilton Jazzmaster',                count: 7, logo: LOGO_HAMILTON, photo: PHOTO_HAMILTON_JAZZ  },
+    { label: 'Audemars Piguet Royal Oak Offshore', count: 5, logo: LOGO_AP,       photo: PHOTO_AP_RO_OFFSHORE },
+    { label: 'Junghans Sport',                     count: 4, logo: LOGO_JUNGHANS, photo: PHOTO_JUNGHANS_SPORT },
+    { label: 'Longines DolceVita',                 count: 4, logo: LOGO_LONGINES, photo: PHOTO_LONGINES_DOLCE },
+    { label: 'Cartier Baignoire',                  count: 4, logo: LOGO_CARTIER,  photo: PHOTO_CARTIER        },
 ]
 
 const MAX = 9  // same scale as slide 1-5
