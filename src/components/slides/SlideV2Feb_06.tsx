@@ -13,10 +13,10 @@ export function SlideV2Feb_06() {
                 { label: 'Alligator',               count: 14 },
                 { label: 'Calfskin',                count: 14 },
                 { label: 'Polycarbonate',           count: 10 },
+                { label: 'Rose Gold',               count: 8 },
                 { label: 'Textile',                 count: 6 },
                 { label: 'Titanium',                count: 6 },
-                { label: 'Bio-Sourced',             count: 2 },
-                { label: 'Nubuck',                  count: 3 },
+                { label: 'Gold',                    count: 6 },
             ]}
         />
     )
