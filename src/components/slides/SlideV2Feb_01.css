@@ -1,0 +1,11 @@
+/* Feb cover — exact Figma: top 750px, height 600px, 100% width no gaps */
+.slide01feb .slide01__img-wrap {
+    top: 750px;
+    bottom: auto;
+    height: 600px;
+}
+
+.slide01feb .slide01__img {
+    object-fit: cover;
+    object-position: center top;
+}

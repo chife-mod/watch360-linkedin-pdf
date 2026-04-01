@@ -1,13 +1,13 @@
 import './v2.css'
 import LOGO_SYMBOL from '/assets/logos/watch360-symbol.svg'
 import LOGO_WORDMARK from '/assets/logos/watch360-wordmark.svg'
-import LOGO_HUBLOT from '/assets/brand-logos/hublot.svg'
-import LOGO_BVLGARI from '/assets/brand-logos/bvlgari.svg'
-import LOGO_LV from '/assets/brand-logos/louis-vuitton.svg'
-import LOGO_TAG from '/assets/brand-logos/tag-heuer.svg'
-import LOGO_ZENITH from '/assets/brand-logos/zenith.svg'
-import LOGO_GG from '/assets/brand-logos/gerald-genta.png'
-import LOGO_DR from '/assets/brand-logos/daniel-roth.png'
+import LOGO_HUBLOT from '/assets/logos/hublot.svg'
+import LOGO_BVLGARI from '/assets/logos/bvlgari.svg'
+import LOGO_LV from '/assets/logos/louis_vuitton.svg'
+import LOGO_TAG from '/assets/logos/tag_heuer.svg'
+import LOGO_ZENITH from '/assets/logos/zenith.svg'
+import LOGO_GG from '/assets/logos/gerald_genta.png'
+import LOGO_DR from '/assets/logos/daniel_roth.svg'
 
 interface BrandRow {
     name: string

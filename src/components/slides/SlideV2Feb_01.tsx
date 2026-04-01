@@ -1,12 +1,13 @@
 import './v2.css'
 import './SlideV2_01.css'
+import './SlideV2Feb_01.css'
 import LOGO_SYMBOL from '/assets/logos/watch360-symbol.svg'
 import LOGO_WORDMARK from '/assets/logos/watch360-wordmark.svg'
 import COVER_IMG from '/assets/images/Feb-Cover-Watch.png'
 
 export function SlideV2Feb_01() {
     return (
-        <div className="v2-slide slide01">
+        <div className="v2-slide slide01 slide01feb">
             {/* Full sand background */}
             <div className="slide01__sand" />
 

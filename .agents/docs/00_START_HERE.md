@@ -1,187 +1,240 @@
 ---
-description: How to create a new monthly Watch360 LinkedIn PDF report
+description: Single source of truth for creating monthly Watch360 LinkedIn PDF reports
 ---
 
-# New Monthly Report Workflow
+# Watch360 Monthly Report — Agent Workflow
 
-**Target time: ~30 min. API only.**
-
----
-
-## 🚨 ФИЛОСОФИЯ "ZERO-ERROR" (ПОЧЕМУ АГЕНТЫ ОШИБАЮТСЯ И КАК ЭТОГО ИЗБЕЖАТЬ)
-
-1. **ЗАПРЕЩЕНО ПАРСИТЬ CSV ЧЕРЕЗ GREP/CAT.** Текстовый поиск ломает структуру колонок (данные съезжают). **Единственный верный способ** — попросить пользователя скинуть `.xlsx` файл в чат и прочитать его через Python-скрипт (`pandas` или `openpyxl`). 
-2. **ЗАПРЕЩЕНА "ХИРУРГИЧЕСКАЯ" КОРРЕКТИРОВКА ДАННЫХ.** Самая частая причина поломок кода — попытка агента заменить одну строку в массиве `rows=[...]`. Это ведет к синтаксическим ошибкам, пропущенным запятым и потере индексов. **Если данные ошибочны, агент обязан перегенерировать и заменить ВЕСЬ массив `rows` целиком.**
-3. **КОНФИКТЫ MINIO.** Стандартный S3 API-порт на сервере MinIO закрыт. Поэтому попытки скачать файлы через `minio` SDK или curl по S3-протоколу приведут к ошибкам соединения. **Единственный верный способ** — использовать Web Console API (логин через jwt-cookie и скачивание по base64-префиксу).
+**Время: ~30 мин. Каждый выпуск = новая сессия (не продолжать старый тред).**
 
 ---
 
-## ⚠️ ГЛАВНОЕ ПРАВИЛО: ТОЛЬКО ДАННЫЕ ИЗ ТАБЛИЦЫ
+## ЖЕЛЕЗНЫЕ ПРАВИЛА
 
-**Весь текст, все заголовки, все названия, все цифры — берутся ТОЛЬКО из Google Sheet.**
+Нарушение любого из них = брак. Агент обязан знать их наизусть.
+
+### 1. Данные — ТОЛЬКО из таблицы
+Весь текст, заголовки, названия, цифры — только из Excel-файла от пользователя.
 Ничего не придумывать, не переименовывать, не добавлять от себя.
+Если чего-то нет в таблице — этого нет на слайде.
+Если что-то непонятно — **спросить**, не угадывать.
 
-- Заголовок слайда = точный текст из заголовка колонки в таблице (первая строка)
-- Названия строк = точно как в таблице
-- Цифры = точно как в таблице
-- Если чего-то нет в таблице — этого нет на слайде
-- Если что-то непонятно или отсутствует — **спросить у пользователя**, не придумывать самостоятельно
+### 2. Никогда не парсить CSV через grep/cat/sed
+Текстовый поиск ломает структуру колонок. Только программный парсинг (Python `openpyxl`/`pandas` или Node.js).
 
-> Пример нарушения: назвать слайд "PRODUCT LINES" вместо "COLLECTION" (реальный заголовок из таблицы). Это недопустимо.
+### 3. Никогда не делать "хирургические" правки данных
+Замена одной строки в массиве `rows=[...]` ведёт к синтаксическим ошибкам.
+**Всегда перегенерировать и заменить ВЕСЬ массив целиком.**
 
-**Ключи и ссылки хранятся в `.env.local` (не синкается с GitHub):**
-- `GOOGLE_SHEET_URL` — ссылка на исходную таблицу с данными
-- `MINIO_BASE` / `MINIO_USER` / `MINIO_PASS` / `MINIO_BUCKET` — доступ к логотипам
+### 4. MinIO — только через Web Console API
+S3-порт закрыт. `minio` SDK и `curl` по S3-протоколу не работают.
+Скрипт: `.agents/scripts/download_missing.cjs`. Креды в `.env.local`.
+**Полная документация:** `../../WORKFLOW.md` → Шаг 1.2
+
+### 5. Нет лого → текст, не пустой квадрат
+Если `ct_brand_*` или `ct_product_line_*` не найдено → `logo: null` → рендерить название текстом.
+Детали: `.agents/workflows/logo-fallback-rule.md`.
+
+### 6. Title = одна строка
+Никогда `\n` в title. Если не влезает — сократить ("WATCH FUNCTIONS" → "FUNCTIONS").
 
 ---
 
-## Step 1 — Get data (THE "ZERO ERROR" EXCEL WORKFLOW)
+## FLOW
 
-**Для 100% точности данных мы больше не используем `curl` и `grep` для парсинга CSV! Текстовый поиск приводит к смещению колонок.**
+```
+STEP 1: Пользователь скидывает Excel
+STEP 2: Агент парсит + валидирует + скачивает лого + создаёт слайды  (АВТОМАТИЧЕСКИ)
+STEP 3: Пользователь смотрит превью локально  →  правки если нужно
+STEP 4: Пользователь говорит "деплой"  →  агент деплоит
+```
 
-Ask the user for the actual Excel/CSV file right here in the chat:
-1. **Request the File:** "Пожалуйста, скиньте мне актуальный Excel (.xlsx) или CSV файл прямо сюда в чат."
-2. **Programmatic Parsing:** When the user drops the file, write a robust Python or Node.js script (using e.g., Python's `csv` module) to extract the exact column strictly by its index. Filter out empty cells.
-3. **Array Overwrite:** Take the isolated array from your script and completely overwrite the `rows=[...]` constant inside the target `.tsx` slide file. Do not use `grep` or `sed` to do surgical line edits—replace the array wholesale.
-4. **Top-10 Constraint:** If a slide component physically fits only 10 rows (like `SimpleBarSlide`), truncate the data strictly to the Top 10 elements.
+**Точки остановки — только ДВЕ:**
+1. После Step 2 — "Готово, запустил dev-сервер. Проверьте на localhost:5173."
+2. После Step 3 — ждёт команду "деплой".
 
-**Note / Skip rules (check each column's bottom cell manually or scripturally):**
+Всё остальное агент делает сам, без вопросов.
 
-| Cell value | Action |
+---
+
+### STEP 1 — Получить Excel
+
+Агент говорит:
+
+> Скиньте актуальный Excel (.xlsx) файл.
+
+Ждёт файл. Ничего не делает до получения.
+
+---
+
+### STEP 2 — Автоматическая обработка (без вопросов)
+
+Агент выполняет всё ниже **последовательно и молча**, не спрашивая подтверждения на каждом этапе.
+
+#### 2a. Парсинг Excel
+
+Написать Python-скрипт (или адаптировать `.agents/scripts/verify_excel_v2.py`):
+- Прочитать каждую секцию (колонку-слайд)
+- Извлечь: **заголовок**, **данные (label + count)**, **note**, **skip**
+- **Автоматическая валидация** — скрипт сам проверяет:
+  - Пустые значения в label или count → ошибка
+  - count не является числом → ошибка
+  - Дубликаты label внутри одной секции → предупреждение
+  - Секция с заголовком, но без данных → пропустить (не создавать слайд)
+
+**Если валидация нашла ошибки** → остановиться и показать пользователю ТОЛЬКО проблемы:
+```
+ПРОБЛЕМА: секция "CASE MATERIALS", строка 7 — пустой count
+ПРОБЛЕМА: секция "STRAP MATERIALS" — дубликат "Leather"
+```
+
+**Если ошибок нет** → молча продолжить.
+
+**Правила парсинга:**
+
+| Последняя ячейка секции | Действие |
 |---|---|
-| `Note` (or contains note text) | Include the note text as a footnote on that slide, left-aligned at `left: 100px`. |
-| `skip` (red square) | **Remove this slide entirely** from `App.tsx` REPORTS array. |
-| Empty | Process normally |
----
+| Содержит текст заметки | Добавить как footnote на слайд |
+| `skip` / красная заливка | Убрать слайд из REPORTS |
+| Пустая | Обработать нормально |
 
-## Step 2 — Get logos from MinIO (API)
+**Лимиты:**
+- Строк ≤ 10 → все на слайд
+- Строк > 10 → Top 10
+- Секция с заголовком без данных → слайд НЕ создаём
 
-**Naming pattern:** `objects-logos/ct_brand_[brand_name_lowercase_underscored].svg`
-**Watches pattern:** `objects-watches/ct_product_line_[line_name].png` 
-*(Внимание: иногда часы по ошибке лежат в папке `objects-logos`! Спрашивайте у пользователя наличие)*
+#### 2b. Скачать логотипы из MinIO
 
-**⚠️ ВАЖНО: Порт S3 закрыт! Скачивать можно ТОЛЬКО через внутренний API веб-консоли MinIO!**
+1. Составить список нужных логотипов из распарсенных данных
+2. Проверить, какие уже есть в `public/assets/logos/` и `public/assets/watches/`
+3. Недостающие — скачать через `.agents/scripts/download_missing.cjs`
+4. Не найденные в MinIO → `logo: null` (текстовый fallback, см. Железное правило 5)
 
-```javascript
-// Пример: download_minio.cjs (использует Web API вместо S3)
-const fs = require('fs');
-const https = require('https');
-const b64 = (str) => Buffer.from(str).toString('base64');
+**MinIO naming (пробовать в таком порядке):**
+- Бренды: `objects-logos/ct_brand_[name_lowercase_underscored].svg`, затем `.png`
+- Коллекции: `objects-watches/ct_product_line_[name].png`
+- Fallback: `objects-logos/ct_product_line_[name].png` (иногда лежат не в той папке)
 
-// 1. Получаем токен авторизации (через POST /api/v1/login с accessKey и secretKey из .env.local)
-// 2. Делаем запрос на скачивание (путь должен быть в base64):
-const remotePath = 'objects-logos/ct_brand_cartier.svg';
-const url = 'https://sa.minio-admin.semanticforce.ai/api/v1/buckets/sf-ai/objects/download?prefix=' + b64(remotePath);
+Агент не спрашивает разрешения. Скачал что нашёл, остальное → текстовый fallback.
 
-https.get(url, { headers: { 'Cookie': 'token='+token } }, (res) => {
-    if (res.statusCode === 200) {
-        res.pipe(fs.createWriteStream('public/assets/logos/cartier.svg'));
-    }
-});
+#### 2c. Создать слайды
+
+**Метод:** копировать ближайший слайд предыдущего месяца и адаптировать.
+
+```bash
+cp src/components/slides/SlideV2Feb_05.tsx src/components/slides/SlideV2Mar_05.tsx
 ```
 
-**⚠️ MinIO rules:**
-- Read-only. Never delete, move or modify anything.
-- Credentials are stored in `.env.local` (gitignored). Read them from there.
+В новом файле:
+- Заменить месяц ("FEB 2026" → "MAR 2026")
+- **Полностью перезаписать массив `rows`** данными из парсинга
+- Обновить импорты логотипов
+- Добавить footnote если есть Note
 
----
-
-## Step 3 — Create slide components
-
-**Pattern:** copy the closest January equivalent and adapt data.
-
-```
-src/components/slides/SlideV2[Mar/Apr/...]_01.tsx  ← Cover
-src/components/slides/SlideV2[Mar/Apr/...]_04.tsx  ← Top N Brands (logo bars)
-src/components/slides/SlideV2[Mar/Apr/...]_05.tsx  ← Case Material (SimpleBarSlide)
-... etc.
-```
-
-**Rules:**
-- Title = **ONE line only** (no `\n`). If too long → shorten: "WATCH FUNCTIONS" → "FUNCTIONS"
-- Use `SimpleBarSlide` for all non-logo bar slides
-- Do NOT override `subtitleTop` or `barsTop` unless truly unavoidable
-- Logo boxes: white square background `#FFFFFF`, `border-radius: 6px`, `padding: 10px`
-
----
-
-## Step 4 — Register in App.tsx
+**Регистрация в App.tsx:**
 
 ```tsx
-// In REPORTS array:
+// Новый месяц — первый в REPORTS
 {
     id: 'mar-2026',
     label: 'MAR 2026',
     slides: [
         <SlideV2Mar_01 />,  // Cover
         <SlideV2Mar_04 />,  // Top N Brands
-        // ... only slides with data
+        // ... только слайды с данными (без skip)
     ],
 },
 ```
 
----
+**Правила компонентов:**
+- `SimpleBarSlide` для всех баровых слайдов без логотипов
+- Logo bars: белый квадрат `#FFFFFF`, `border-radius: 6px`, `padding: 10px`
+- НЕ переопределять `subtitleTop`, `barsTop` без необходимости
+- Logo placeholder на тёмном фоне: `rgba(255,255,255,...)`, не `rgba(58,57,53,...)`
 
-## Step 5 — Push to GitHub and deploy
+#### 2d. Запустить dev-сервер
 
 ```bash
-# Stage and commit changes
-git add src/components/slides/ src/App.tsx public/assets/logos/
-git commit -m "feat(slides): [month] report slides"
+npm run dev
+```
 
-# Push source to main
-git push
+**Только теперь агент останавливается и говорит:**
 
-# Build and deploy to GitHub Pages
-npm run deploy  # runs build + gh-pages -d dist automatically
+> Готово. Создано N слайдов для [MONTH] 2026.
+> Не найдены лого (текстовый fallback): [список, если есть]
+> Dev-сервер запущен → localhost:5173. Проверьте визуал.
+
+---
+
+### STEP 3 — Превью и правки
+
+Пользователь смотрит слайды на localhost. Если что-то не так — говорит, агент правит.
+Цикл повторяется пока пользователь не скажет "ок" / "деплой" / "го".
+
+---
+
+### STEP 4 — Деплой
+
+Только после явной команды пользователя.
+
+```bash
+git add src/components/slides/ src/App.tsx public/assets/logos/ public/assets/watches/
+git commit -m "feat(slides): [MONTH] 2026 report"
+git push origin main
+npm run deploy
 ```
 
 **Live URL:** https://chife-mod.github.io/watch360-linkedin-pdf/
 
 ---
 
+## Дизайн-система (справочник)
 
-## Checklist
-
-- [ ] No credentials in any `.tsx`, `.ts`, `.css`, `.md` files
-- [ ] No Figma tokens in committed files
-- [ ] All slide titles fit in 1 line
-- [ ] Slides without data → not added to REPORTS array
-- [ ] Deployed and tested at GH Pages URL
+| Параметр | Значение |
+|---|---|
+| Размер слайда | 1080 x 1350 px |
+| Шрифт | Lato Regular (400) везде, без Bold |
+| Заголовок | 100px, `#A98155` (gold) |
+| Обложка заголовок | 108px (исключение) |
+| Подзаголовок | 49px, `#3A3935` (charcoal), gap 11px |
+| Sand panel | `#F0EFEE`, h=405px |
+| Dark panel | `#3A3935`, h=945px |
+| URL | www.watch360.ai, 26px, top-right |
+| Logo bar rows | 96px height, 14px gap, logo 96x96 |
+| Simple bar rows | 56px height, 21px gap |
+| Bar labels | 48px |
+| Muted text | `#9A9793` |
 
 ---
 
-## ⚡ TOKEN EFFICIENCY — ОБЯЗАТЕЛЬНО
+## Структура файлов
 
-**Каждый выпуск = новая сессия.** Не продолжать старый тред — история тянет токены на каждый запрос.
+```
+.agents/scripts/
+  verify_excel_v2.py      — парсинг Excel (адаптировать под новый месяц)
+  download_missing.cjs    — скачивание логотипов из MinIO
 
-### Читать файлы точечно — не целиком
+src/components/slides/
+  SlideV2[Month]_01.tsx   — Cover
+  SlideV2[Month]_04.tsx   — Top N Brands (bars + logos)
+  SlideV2[Month]_05+.tsx  — Bar slides (SimpleBarSlide)
+  SlideV2[Month]_10+.tsx  — Collections, Media refs и др.
 
-```bash
-# ❌ Дорого
-cat src/components/slides/SlideV2Feb_05.tsx
+public/assets/
+  logos/                  — логотипы брендов (SVG или PNG)
+  watches/                — фото коллекций (PNG)
 
-# ✅ Дёшево — только нужные строки
-grep -n "count:\|label:\|title=\|subtitle=" src/components/slides/SlideV2Feb_05.tsx
-grep -n "v2-logo-box" src/components/slides/v2.css
+src/App.tsx               — REPORTS array (регистрация слайдов)
+.env.local                — креды MinIO (gitignored)
 ```
 
-### Таблицу — только нужные колонки
+---
 
-```bash
-# Не делать полный дамп всех 14 групп
-# Сразу указывать конкретные col-индексы нужных слайдов
-```
+## Чеклист (агент проверяет автоматически)
 
-### Копировать ближайший слайд, не писать с нуля
-
-```bash
-cp src/components/slides/SlideV2Feb_05.tsx src/components/slides/SlideV2Mar_05.tsx
-sed -i '' 's/FEB 2026/MAR 2026/g' src/components/slides/SlideV2Mar_05.tsx
-# Затем multi_replace только изменённых данных
-```
-
-### Правило: нет лого/ЦТ → текст, не пустой квадрат
-
-Если `ct_brand_*` или `ct_product_line_*` не найдено в MinIO → `logo: null` → рендерить название бренда текстом.
-Детали: `.agents/workflows/logo-fallback-rule.md`
+- [ ] Парсинг Excel прошёл без ошибок валидации
+- [ ] Слайды с `skip` не добавлены в REPORTS
+- [ ] Notes добавлены как footnotes
+- [ ] Все title в одну строку
+- [ ] Отсутствующие логотипы → текстовый fallback, не пустые квадраты
+- [ ] Нет кредов в .tsx / .ts / .css / .md файлах
+- [ ] Пользователь проверил превью на localhost (Step 3)

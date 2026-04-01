@@ -2,7 +2,7 @@ import './v2.css'
 import './SlideV2_01.css'
 import LOGO_SYMBOL from '/assets/logos/watch360-symbol.svg'
 import LOGO_WORDMARK from '/assets/logos/watch360-wordmark.svg'
-import COVER_IMG from '/assets/images/cover-watch.png'
+import COVER_IMG from '/assets/images/01.webp'
 
 export function SlideV2_01() {
     return (

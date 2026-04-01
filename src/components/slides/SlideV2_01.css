@@ -86,7 +86,7 @@
     margin: 0;
 }
 
-/* Watch image — natural proportions, no distortion */
+/* Watch image — Jan: original position */
 .slide01__img-wrap {
     position: absolute;
     bottom: 0;
