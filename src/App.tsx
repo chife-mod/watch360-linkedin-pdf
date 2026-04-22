@@ -30,11 +30,47 @@ import { SlideV2Feb_14 } from './components/slides/SlideV2Feb_14'
 import { SlideV2Feb_15 } from './components/slides/SlideV2Feb_15'
 import { SlideV2Feb_15b } from './components/slides/SlideV2Feb_15b'
 
+// March 2026 slides
+import { SlideV2Mar_01 } from './components/slides/SlideV2Mar_01'
+import { SlideV2Mar_04 } from './components/slides/SlideV2Mar_04'
+import { SlideV2Mar_05 } from './components/slides/SlideV2Mar_05'
+import { SlideV2Mar_06 } from './components/slides/SlideV2Mar_06'
+import { SlideV2Mar_07 } from './components/slides/SlideV2Mar_07'
+import { SlideV2Mar_08 } from './components/slides/SlideV2Mar_08'
+import { SlideV2Mar_09 } from './components/slides/SlideV2Mar_09'
+import { SlideV2Mar_10 } from './components/slides/SlideV2Mar_10'
+import { SlideV2Mar_10b } from './components/slides/SlideV2Mar_10b'
+import { SlideV2Mar_11 } from './components/slides/SlideV2Mar_11'
+import { SlideV2Mar_12 } from './components/slides/SlideV2Mar_12'
+import { SlideV2Mar_14 } from './components/slides/SlideV2Mar_14'
+import { SlideV2Mar_15 } from './components/slides/SlideV2Mar_15'
+import { SlideV2Mar_15b } from './components/slides/SlideV2Mar_15b'
+
 const SLIDE_W = 1080
 const SLIDE_H = 1350
 const HUD_H = 56
 
 const REPORTS = [
+    {
+        id: 'mar-2026',
+        label: 'MAR 2026',
+        slides: [
+            <SlideV2Mar_01 />,  // 01 Cover
+            <SlideV2Mar_04 />,  // 02 Top 7 Brands
+            <SlideV2Mar_15 />,  // 03 Collections [1–5]
+            <SlideV2Mar_15b />, // 04 Collections [6–10]
+            <SlideV2Mar_10 />,  // 05 REFs in Media [1–5]
+            <SlideV2Mar_10b />, // 06 REFs in Media [6–10]
+            <SlideV2Mar_09 />,  // 07 Price Ranges
+            <SlideV2Mar_08 />,  // 08 Special Editions
+            <SlideV2Mar_07 />,  // 09 Dial Colors
+            <SlideV2Mar_05 />,  // 10 Case Material
+            <SlideV2Mar_06 />,  // 11 Strap Material
+            <SlideV2Mar_11 />,  // 12 Case Diameter
+            <SlideV2Mar_12 />,  // 13 Case Height
+            <SlideV2Mar_14 />,  // 14 Functions
+        ],
+    },
     {
         id: 'feb-2026',
         label: 'FEB 2026',
@@ -81,7 +117,7 @@ const computeAutoScale = () =>
 function App() {
     const [scale, setScale] = useState(computeAutoScale)
     const [isExporting, setIsExporting] = useState(false)
-    const [reportId, setReportId] = useState('feb-2026')
+    const [reportId, setReportId] = useState('mar-2026')
 
     const userAdjRef = useRef(false)
     const deckRef = useRef<HTMLDivElement>(null)

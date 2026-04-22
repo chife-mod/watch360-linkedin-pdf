@@ -1,0 +1,11 @@
+/* Mar cover — full-width image pinned to bottom edge */
+.slide01mar .slide01__img-wrap {
+    top: 750px;
+    bottom: auto;
+    height: 600px;
+}
+
+.slide01mar .slide01__img {
+    object-fit: cover;
+    object-position: center top;
+}
