@@ -9,18 +9,22 @@ import LOGO_LONGINES from '/assets/logos/longines.svg'
 import LOGO_OMEGA    from '/assets/logos/omega.svg'
 import LOGO_NOMOS    from '/assets/logos/nomos_glashutte.svg'
 
-// Collection watch photos (available from MinIO)
+// Collection watch photos — ALL from MinIO ✅
+import IMG_DELMA     from '/assets/watches/col_delma_diver.png'
+import IMG_DOXA      from '/assets/watches/col_doxa_sub_200_ii.png'
+import IMG_LONGINES  from '/assets/watches/col_longines_conquest.png'
 import IMG_OMEGA     from '/assets/watches/col_omega_constellation.png'
+import IMG_NOMOS     from '/assets/watches/col_nomos_glashutte_club.png'
 
 interface Line { label: string; count: number; logo: string; photo: string | null }
 
 /* Mar 2026 Collections [1–5] — from Google Sheet */
 const LINES: Line[] = [
-    { label: 'Delma Diver',           count: 19, logo: LOGO_DELMA,    photo: null      },
-    { label: 'DOXA SUB 200 II',       count: 13, logo: LOGO_DOXA,     photo: null      },
-    { label: 'Longines Conquest',     count: 12, logo: LOGO_LONGINES, photo: null      },
-    { label: 'Omega Constellation',   count: 9,  logo: LOGO_OMEGA,    photo: IMG_OMEGA },
-    { label: 'Nomos Glashütte Club',  count: 8,  logo: LOGO_NOMOS,    photo: null      },
+    { label: 'Delma Diver',           count: 19, logo: LOGO_DELMA,    photo: IMG_DELMA    },
+    { label: 'DOXA SUB 200 II',       count: 13, logo: LOGO_DOXA,     photo: IMG_DOXA     },
+    { label: 'Longines Conquest',     count: 12, logo: LOGO_LONGINES, photo: IMG_LONGINES },
+    { label: 'Omega Constellation',   count: 9,  logo: LOGO_OMEGA,    photo: IMG_OMEGA    },
+    { label: 'Nomos Glashütte Club',  count: 8,  logo: LOGO_NOMOS,    photo: IMG_NOMOS    },
 ]
 
 const MAX = 19

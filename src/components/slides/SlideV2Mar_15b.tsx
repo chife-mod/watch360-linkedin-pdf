@@ -9,18 +9,22 @@ import LOGO_BREITLING from '/assets/logos/breitling.svg'
 import LOGO_CITIZEN   from '/assets/logos/citizen.svg'
 import LOGO_MIDO      from '/assets/logos/mido.svg'
 
-// Collection watch photos (available from MinIO)
+// Collection watch photos — ALL from MinIO ✅
+import IMG_BREGUET_T  from '/assets/watches/col_breguet_tradition.png'
+import IMG_TISSOT_G   from '/assets/watches/col_tissot_gentleman.png'
 import IMG_BREITLING  from '/assets/watches/col_breitling_navitimer.png'
+import IMG_CITIZEN_S  from '/assets/watches/col_citizen_series_8.png'
+import IMG_MIDO_C     from '/assets/watches/col_mido_commander.png'
 
 interface Line { label: string; count: number; logo: string; photo: string | null }
 
 /* Mar 2026 Collections [6–10] — from Google Sheet */
 const LINES: Line[] = [
-    { label: 'Breguet Tradition',     count: 6, logo: LOGO_BREGUET,   photo: null         },
-    { label: 'Tissot Gentleman',      count: 4, logo: LOGO_TISSOT,    photo: null         },
-    { label: 'Breitling Navitimer',   count: 4, logo: LOGO_BREITLING, photo: IMG_BREITLING },
-    { label: 'Citizen Series 8',      count: 4, logo: LOGO_CITIZEN,   photo: null         },
-    { label: 'Mido Commander',        count: 4, logo: LOGO_MIDO,      photo: null         },
+    { label: 'Breguet Tradition',     count: 6, logo: LOGO_BREGUET,   photo: IMG_BREGUET_T },
+    { label: 'Tissot Gentleman',      count: 4, logo: LOGO_TISSOT,    photo: IMG_TISSOT_G  },
+    { label: 'Breitling Navitimer',   count: 4, logo: LOGO_BREITLING, photo: IMG_BREITLING  },
+    { label: 'Citizen Series 8',      count: 4, logo: LOGO_CITIZEN,   photo: IMG_CITIZEN_S  },
+    { label: 'Mido Commander',        count: 4, logo: LOGO_MIDO,      photo: IMG_MIDO_C     },
 ]
 
 const MAX = 19  // same scale as slide 1-5
