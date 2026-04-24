@@ -173,11 +173,55 @@ function App() {
                 const prev = el.style.transform
                 el.style.transform = 'none'
                 await new Promise(r => setTimeout(r, 200))
+
+                // html2canvas 1.x ignores CSS object-fit → images with
+                // object-fit: contain/cover get stretched. Measure each such
+                // <img> at render size, then in onclone swap it for a <div>
+                // with a background-image (background-size honors contain/cover).
+                const imgBoxes = new Map<string, { w: number; h: number; fit: string; pos: string; src: string }>()
+                el.querySelectorAll('img').forEach((img, idx) => {
+                    const s = getComputedStyle(img)
+                    const fit = s.objectFit
+                    if (fit === 'contain' || fit === 'cover') {
+                        const r = img.getBoundingClientRect()
+                        const key = `pdfimg-${i}-${idx}`
+                        img.setAttribute('data-pdf-img-id', key)
+                        imgBoxes.set(key, {
+                            w: r.width, h: r.height,
+                            fit, pos: s.objectPosition || 'center',
+                            src: img.src,
+                        })
+                    }
+                })
+
                 const canvas = await html2canvas(el, {
                     width: SLIDE_W, height: SLIDE_H,
                     scale: 2, useCORS: true,
                     backgroundColor: '#F0EFEE', logging: false,
+                    onclone: (_doc, root) => {
+                        root.querySelectorAll<HTMLImageElement>('img[data-pdf-img-id]').forEach(img => {
+                            const key = img.getAttribute('data-pdf-img-id')!
+                            const m = imgBoxes.get(key)
+                            if (!m) return
+                            const div = _doc.createElement('div')
+                            div.style.cssText = [
+                                `width:${m.w}px`, `height:${m.h}px`,
+                                `background-image:url("${m.src}")`,
+                                `background-size:${m.fit}`,
+                                `background-position:${m.pos}`,
+                                `background-repeat:no-repeat`,
+                                `flex-shrink:0`,
+                            ].join(';')
+                            img.parentNode?.replaceChild(div, img)
+                        })
+                    },
                 })
+
+                // Clean up markers on the live DOM
+                el.querySelectorAll('img[data-pdf-img-id]').forEach(img => {
+                    img.removeAttribute('data-pdf-img-id')
+                })
+
                 el.style.transform = prev
                 const imgData = canvas.toDataURL('image/jpeg', 0.95)
                 if (i > 0) pdf.addPage([SLIDE_W, SLIDE_H], 'portrait')
