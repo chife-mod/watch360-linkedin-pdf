@@ -50,6 +50,13 @@ const SLIDE_W = 1080
 const SLIDE_H = 1350
 const HUD_H = 56
 
+// ─────────────────────────────────────────────────────────────────────────────
+// RULE: the most recent month is ALWAYS the first entry in REPORTS. It is
+// shown in the dropdown with a "· CURRENT" suffix and is the default selected
+// value (see `useState('mar-2026')` below). When adding a new month, insert
+// the new { id, label, slides } block at the TOP of this array and update the
+// default reportId to match. See WORKFLOW.md ("Вкладка CURRENT всегда первая").
+// ─────────────────────────────────────────────────────────────────────────────
 const REPORTS = [
     {
         id: 'mar-2026',
@@ -271,8 +278,10 @@ function App() {
                     onChange={e => setReportId(e.target.value)}
                     aria-label="Select report"
                 >
-                    {REPORTS.map(r => (
-                        <option key={r.id} value={r.id}>{r.label}</option>
+                    {REPORTS.map((r, i) => (
+                        <option key={r.id} value={r.id}>
+                            {i === 0 ? `${r.label} · CURRENT` : r.label}
+                        </option>
                     ))}
                 </select>
 
