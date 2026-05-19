@@ -3,8 +3,7 @@ import './SlideV2_01.css'
 import './SlideV2Apr_01.css'
 import LOGO_SYMBOL from '/assets/logos/watch360-symbol.svg'
 import LOGO_WORDMARK from '/assets/logos/watch360-wordmark.svg'
-// TODO: replace with Apr-specific cover image when delivered
-import COVER_IMG from '/assets/images/March-Cover-2x.webp'
+import COVER_IMG from '/assets/images/Apr-Cover_x2.png'
 
 export function SlideV2Apr_01() {
     return (
