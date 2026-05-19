@@ -1,0 +1,11 @@
+/* Apr cover — full-width image pinned to bottom edge (same as Mar) */
+.slide01apr .slide01__img-wrap {
+    top: 790px;
+    bottom: auto;
+    height: 600px;
+}
+
+.slide01apr .slide01__img {
+    object-fit: cover;
+    object-position: center top;
+}

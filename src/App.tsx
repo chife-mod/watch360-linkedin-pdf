@@ -46,6 +46,24 @@ import { SlideV2Mar_14 } from './components/slides/SlideV2Mar_14'
 import { SlideV2Mar_15 } from './components/slides/SlideV2Mar_15'
 import { SlideV2Mar_15b } from './components/slides/SlideV2Mar_15b'
 
+// April 2026 slides
+import { SlideV2Apr_01 } from './components/slides/SlideV2Apr_01'
+import { SlideV2Apr_02 } from './components/slides/SlideV2Apr_02'
+import { SlideV2Apr_03 } from './components/slides/SlideV2Apr_03'
+import { SlideV2Apr_04 } from './components/slides/SlideV2Apr_04'
+import { SlideV2Apr_05 } from './components/slides/SlideV2Apr_05'
+import { SlideV2Apr_06 } from './components/slides/SlideV2Apr_06'
+import { SlideV2Apr_07 } from './components/slides/SlideV2Apr_07'
+import { SlideV2Apr_08 } from './components/slides/SlideV2Apr_08'
+import { SlideV2Apr_09 } from './components/slides/SlideV2Apr_09'
+import { SlideV2Apr_10 } from './components/slides/SlideV2Apr_10'
+import { SlideV2Apr_10b } from './components/slides/SlideV2Apr_10b'
+import { SlideV2Apr_11 } from './components/slides/SlideV2Apr_11'
+import { SlideV2Apr_12 } from './components/slides/SlideV2Apr_12'
+import { SlideV2Apr_14 } from './components/slides/SlideV2Apr_14'
+import { SlideV2Apr_15 } from './components/slides/SlideV2Apr_15'
+import { SlideV2Apr_15b } from './components/slides/SlideV2Apr_15b'
+
 const SLIDE_W = 1080
 const SLIDE_H = 1350
 const HUD_H = 56
@@ -58,6 +76,28 @@ const HUD_H = 56
 // default reportId to match. See WORKFLOW.md ("Вкладка CURRENT всегда первая").
 // ─────────────────────────────────────────────────────────────────────────────
 const REPORTS = [
+    {
+        id: 'apr-2026',
+        label: 'APR 2026',
+        slides: [
+            <SlideV2Apr_01 />,  // 01 Cover
+            <SlideV2Apr_04 />,  // 02 Top 7 Brands
+            <SlideV2Apr_02 />,  // 03 WWG donut (782 vs 518)
+            <SlideV2Apr_03 />,  // 04 WWG Top 7 Brands
+            <SlideV2Apr_15 />,  // 05 Collections [1–5]
+            <SlideV2Apr_15b />, // 06 Collections [6–10]
+            <SlideV2Apr_10 />,  // 07 REFs in Media [1–5]
+            <SlideV2Apr_10b />, // 08 REFs in Media [6–10]
+            <SlideV2Apr_09 />,  // 09 Price Ranges
+            <SlideV2Apr_08 />,  // 10 Special Editions
+            <SlideV2Apr_07 />,  // 11 Dial Colors
+            <SlideV2Apr_05 />,  // 12 Case Material
+            <SlideV2Apr_06 />,  // 13 Strap Material
+            <SlideV2Apr_11 />,  // 14 Case Diameter
+            <SlideV2Apr_12 />,  // 15 Case Height
+            <SlideV2Apr_14 />,  // 16 Functions
+        ],
+    },
     {
         id: 'mar-2026',
         label: 'MAR 2026',
@@ -124,7 +164,7 @@ const computeAutoScale = () =>
 function App() {
     const [scale, setScale] = useState(computeAutoScale)
     const [isExporting, setIsExporting] = useState(false)
-    const [reportId, setReportId] = useState('mar-2026')
+    const [reportId, setReportId] = useState('apr-2026')
 
     const userAdjRef = useRef(false)
     const deckRef = useRef<HTMLDivElement>(null)
