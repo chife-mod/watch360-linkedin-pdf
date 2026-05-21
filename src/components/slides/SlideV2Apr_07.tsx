@@ -9,9 +9,9 @@ export function SlideV2Apr_07() {
             rows={[
                 { label: 'Blue',        count: 170 },
                 { label: 'Black',       count: 113 },
-                { label: 'White',       count: 95 },
+                { label: 'White',       count: 96 },
+                { label: 'Skeleton',    count: 67 },
                 { label: 'Green',       count: 64 },
-                { label: 'Skeleton',    count: 63 },
                 { label: 'Silver',      count: 60 },
                 { label: 'Grey',        count: 55 },
                 { label: 'Multi-Color', count: 43 },

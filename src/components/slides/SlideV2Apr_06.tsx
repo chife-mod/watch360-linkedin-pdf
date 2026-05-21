@@ -8,8 +8,8 @@ export function SlideV2Apr_06() {
             subtitle='APR 2026 NOVELTIES'
             rows={[
                 { label: 'Stainless Steel', count: 274 },
-                { label: 'Alligator',       count: 147 },
-                { label: 'Rubber',          count: 96 },
+                { label: 'Alligator',       count: 150 },
+                { label: 'Rubber',          count: 98 },
                 { label: 'Leather',         count: 64 },
                 { label: 'Calfskin',        count: 47 },
                 { label: 'Titanium',        count: 40 },

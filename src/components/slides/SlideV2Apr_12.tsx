@@ -15,7 +15,7 @@ export function SlideV2Apr_12() {
                 { label: '11 mm', count: 106 },
                 { label: '10 mm', count: 79  },
                 { label: '9 mm',  count: 89  },
-                { label: '8 mm',  count: 70  },
+                { label: '8 mm',  count: 71  },
                 { label: '7 mm',  count: 70  },
                 { label: '6 mm',  count: 42  },
             ]}

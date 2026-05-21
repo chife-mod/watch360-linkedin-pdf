@@ -12,7 +12,7 @@ export function SlideV2Apr_14() {
                 { label: 'Hacking Seconds',         count: 184 },
                 { label: 'Chronograph',             count: 96 },
                 { label: 'Power Reserve Indicator', count: 52 },
-                { label: 'Moon Phase',              count: 48 },
+                { label: 'Moon Phase',              count: 50 },
                 { label: 'Tourbillon',              count: 42 },
                 { label: 'Dual Time',               count: 37 },
                 { label: 'Calendar',                count: 37 },

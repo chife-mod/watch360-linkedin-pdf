@@ -32,7 +32,7 @@ export function SlideV2Apr_01() {
             {/* Stat cards */}
             <div className="slide01__stats">
                 <div className="slide01__card slide01__card--shadow">
-                    <p className="slide01__num">782</p>
+                    <p className="slide01__num">787</p>
                     <p className="slide01__lbl">New Models</p>
                 </div>
                 <div className="slide01__card">

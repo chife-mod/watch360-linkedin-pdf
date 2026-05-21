@@ -9,15 +9,15 @@ import LOGO_WORDMARK from '/assets/logos/watch360-wordmark.svg'
    R_outer=440, R_inner=280
    Arc sweeps 180°→360° (left to right)
 
-   Apr 2026: 782 total = 264 not at WWG (gold) + 518 at WWG (purple)
+   Apr 2026: 787 total = 264 not at WWG (gold) + 523 at WWG (purple)
 ───────────────────────────────────────── */
 const CX = 440
 const CY = 440
 const RO = 440
 const RI = 280
-const TOTAL = 782
+const TOTAL = 787
 const NOT_FAIR = 264   // gold segment (not at WWG)
-// FAIR = 518 (purple segment, computed implicitly)
+// FAIR = 523 (purple segment, computed implicitly)
 const GAP_DEG = 2.5
 
 function pt(r: number, deg: number) {
@@ -55,7 +55,7 @@ function DonutSVG() {
         >
             {/* Gold segment — 264 not at WWG */}
             {annularArc(180, GOLD_END, '#A98155')}
-            {/* Purple segment — 518 at WWG */}
+            {/* Purple segment — 523 at WWG */}
             {annularArc(PURP_START, 360, '#B16BE8')}
         </svg>
     )
@@ -86,9 +86,9 @@ export function SlideV2Apr_02() {
             <div className="s02-donut-wrap">
                 <DonutSVG />
 
-                {/* Center overlay: 782 / Total Novelties */}
+                {/* Center overlay: 787 / Total Novelties */}
                 <div className="s02-center-label">
-                    <p className="s02-center-num">782</p>
+                    <p className="s02-center-num">787</p>
                     <p className="s02-center-sub">Total Novelties</p>
                 </div>
             </div>
@@ -99,7 +99,7 @@ export function SlideV2Apr_02() {
                     <p className="s02-legend-num" style={{ color: '#A98155' }}>264</p>
                 </div>
                 <div className="s02-legend-item">
-                    <p className="s02-legend-num" style={{ color: '#B16BE8' }}>518</p>
+                    <p className="s02-legend-num" style={{ color: '#B16BE8' }}>523</p>
                     <p className="s02-legend-lbl">Presented at WWG</p>
                 </div>
             </div>
