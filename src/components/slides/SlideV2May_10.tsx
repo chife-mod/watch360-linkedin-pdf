@@ -12,11 +12,11 @@ import IMG_TAG_WBP1190   from '/assets/watches/ref_tag_heuer_wbp1190.png'
 import IMG_TAG_WBP1117   from '/assets/watches/ref_tag_heuer_wbp1117.png'
 
 const MODELS = [
-    { logo: LOGO_PANERAI, name: 'Panerai Submersible GMT',                      ref: 'PAM01495',       img: IMG_PAM01495    },
-    { logo: LOGO_TAG,     name: 'TAG Heuer Aquaracer Professional 200 Solar',   ref: 'WBP1184.BF0008', img: IMG_TAG_WBP1184 },
-    { logo: LOGO_TAG,     name: 'TAG Heuer Aquaracer Professional 200 Solar',   ref: 'WBP1118.BA0047', img: IMG_TAG_WBP1118 },
-    { logo: LOGO_TAG,     name: 'TAG Heuer Aquaracer Professional 200 Solar',   ref: 'WBP1190.BZ0003', img: IMG_TAG_WBP1190 },
-    { logo: LOGO_TAG,     name: 'TAG Heuer Aquaracer Professional 200 Solar',   ref: 'WBP1117.BA0047', img: IMG_TAG_WBP1117 },
+    { logo: LOGO_PANERAI, name: 'Panerai Submersible GMT PAM 1495',  ref: 'PAM01495',       img: IMG_PAM01495    },
+    { logo: LOGO_TAG,     name: 'TAG Heuer Aquaracer Solargraph',    ref: 'WBP1184.BF0008', img: IMG_TAG_WBP1184 },
+    { logo: LOGO_TAG,     name: 'TAG Heuer Aquaracer Solargraph',    ref: 'WBP1118.BA0047', img: IMG_TAG_WBP1118 },
+    { logo: LOGO_TAG,     name: 'TAG Heuer Aquaracer Solargraph',    ref: 'WBP1190.BZ0003', img: IMG_TAG_WBP1190 },
+    { logo: LOGO_TAG,     name: 'TAG Heuer Aquaracer Solargraph',    ref: 'WBP1117.BA0047', img: IMG_TAG_WBP1117 },
 ]
 
 const SQ = 136

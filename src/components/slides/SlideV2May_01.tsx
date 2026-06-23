@@ -1,13 +1,12 @@
 import './v2.css'
 import './SlideV2_01.css'
-import './SlideV2May_01.css'
 import LOGO_SYMBOL from '/assets/logos/watch360-symbol.svg'
 import LOGO_WORDMARK from '/assets/logos/watch360-wordmark.svg'
-import COVER_IMG from '/assets/images/May-Cover_x2.png'
+import WATCH_IMG from '/assets/images/May-Watch.png'
 
 export function SlideV2May_01() {
     return (
-        <div className="v2-slide slide01 slide01may">
+        <div className="v2-slide slide01">
             <div className="slide01__sand" />
             <div className="slide01__dark" />
 
@@ -33,8 +32,40 @@ export function SlideV2May_01() {
                 </div>
             </div>
 
-            <div className="slide01__img-wrap">
-                <img src={COVER_IMG} alt="Watch Cover" className="slide01__img" />
+            {/* Watch image — exact Figma layout: container top:801 h:549, watch rotated -34.05deg */}
+            <div style={{
+                position: 'absolute',
+                top: 801,
+                left: 0,
+                width: 1080,
+                height: 549,
+                overflow: 'hidden',
+                zIndex: 4,
+            }}>
+                <div style={{
+                    position: 'absolute',
+                    left: -41,
+                    top: -209,
+                    width: 1162,
+                    height: 1224,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                }}>
+                    <div style={{ transform: 'rotate(-34.05deg)', flexShrink: 0 }}>
+                        <img
+                            src={WATCH_IMG}
+                            alt=""
+                            style={{
+                                width: 743,
+                                height: 975,
+                                objectFit: 'cover',
+                                display: 'block',
+                                pointerEvents: 'none',
+                            }}
+                        />
+                    </div>
+                </div>
             </div>
         </div>
     )
