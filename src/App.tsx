@@ -46,6 +46,22 @@ import { SlideV2Mar_14 } from './components/slides/SlideV2Mar_14'
 import { SlideV2Mar_15 } from './components/slides/SlideV2Mar_15'
 import { SlideV2Mar_15b } from './components/slides/SlideV2Mar_15b'
 
+// May 2026 slides
+import { SlideV2May_01 }  from './components/slides/SlideV2May_01'
+import { SlideV2May_04 }  from './components/slides/SlideV2May_04'
+import { SlideV2May_05 }  from './components/slides/SlideV2May_05'
+import { SlideV2May_06 }  from './components/slides/SlideV2May_06'
+import { SlideV2May_07 }  from './components/slides/SlideV2May_07'
+import { SlideV2May_08 }  from './components/slides/SlideV2May_08'
+import { SlideV2May_09 }  from './components/slides/SlideV2May_09'
+import { SlideV2May_10 }  from './components/slides/SlideV2May_10'
+import { SlideV2May_10b } from './components/slides/SlideV2May_10b'
+import { SlideV2May_11 }  from './components/slides/SlideV2May_11'
+import { SlideV2May_12 }  from './components/slides/SlideV2May_12'
+import { SlideV2May_14 }  from './components/slides/SlideV2May_14'
+import { SlideV2May_15 }  from './components/slides/SlideV2May_15'
+import { SlideV2May_15b } from './components/slides/SlideV2May_15b'
+
 // April 2026 slides
 import { SlideV2Apr_01 } from './components/slides/SlideV2Apr_01'
 import { SlideV2Apr_02 } from './components/slides/SlideV2Apr_02'
@@ -76,6 +92,26 @@ const HUD_H = 56
 // default reportId to match. See WORKFLOW.md ("Вкладка CURRENT всегда первая").
 // ─────────────────────────────────────────────────────────────────────────────
 const REPORTS = [
+    {
+        id: 'may-2026',
+        label: 'MAY 2026',
+        slides: [
+            <SlideV2May_01 />,  // 01 Cover
+            <SlideV2May_04 />,  // 02 Top 7 Brands
+            <SlideV2May_15 />,  // 03 Collections [1–5]
+            <SlideV2May_15b />, // 04 Collections [6–10]
+            <SlideV2May_10 />,  // 05 REFs in Media [1–5]
+            <SlideV2May_10b />, // 06 REFs in Media [6–10]
+            <SlideV2May_09 />,  // 07 Price Ranges
+            <SlideV2May_08 />,  // 08 Special Editions
+            <SlideV2May_07 />,  // 09 Dial Colors
+            <SlideV2May_05 />,  // 10 Case Material
+            <SlideV2May_06 />,  // 11 Strap Material
+            <SlideV2May_11 />,  // 12 Case Diameter
+            <SlideV2May_12 />,  // 13 Case Height
+            <SlideV2May_14 />,  // 14 Functions
+        ],
+    },
     {
         id: 'apr-2026',
         label: 'APR 2026',
@@ -164,7 +200,7 @@ const computeAutoScale = () =>
 function App() {
     const [scale, setScale] = useState(computeAutoScale)
     const [isExporting, setIsExporting] = useState(false)
-    const [reportId, setReportId] = useState('apr-2026')
+    const [reportId, setReportId] = useState('may-2026')
 
     const userAdjRef = useRef(false)
     const deckRef = useRef<HTMLDivElement>(null)
