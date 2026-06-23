@@ -1,0 +1,11 @@
+/* May cover — watch image: transparent PNG, contain to preserve the composition */
+.slide01may .slide01__img-wrap {
+    top: 801px;
+    bottom: auto;
+    height: 549px;
+}
+
+.slide01may .slide01__img {
+    object-fit: contain;
+    object-position: center top;
+}

@@ -1,14 +1,13 @@
 import './v2.css'
 import './SlideV2_01.css'
-import './SlideV2Apr_01.css'
+import './SlideV2May_01.css'
 import LOGO_SYMBOL from '/assets/logos/watch360-symbol.svg'
 import LOGO_WORDMARK from '/assets/logos/watch360-wordmark.svg'
-// TODO: replace with May-specific cover image when available
-import COVER_IMG from '/assets/images/Apr-Cover_x2.png'
+import COVER_IMG from '/assets/images/May-Cover_x2.png'
 
 export function SlideV2May_01() {
     return (
-        <div className="v2-slide slide01 slide01apr">
+        <div className="v2-slide slide01 slide01may">
             <div className="slide01__sand" />
             <div className="slide01__dark" />
 
